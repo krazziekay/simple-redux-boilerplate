@@ -1,74 +1,46 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as CounterActions from '../actions/CounterActions';
-import * as JobDetailsActions from '../actions/JobDetailsActions';
-import Counter from '../components/Counter';
-import JobDetails from '../components/JobDetails';
+import React, { useEffect, useState } from 'react';
+import Breadcrumb from '../components/Breadcrumb';
+import RightSideBar from '../components/RightSideBar';
+import MidContent from '../components/MidContent';
+import LeftSideBar from '../components/LeftSideBar';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
-/**
- * It is common practice to have a 'Root' container/component require our main App (this one).
- * Again, this is because it serves to wrap the rest of our application with the Provider
- * component to make the Redux store available to the rest of the app.
- */
-class App extends Component {
-  render() {
-    // we can use ES6's object destructuring to effectively 'unpack' our props
-    const {
-      counter,
-      actions,
-      jobDetails,
-      jobDetailsActions
-    } = this.props;
-    return (
-      <div className="main-app-container">
-        <div className="main-app-nav">Simple Redux Boilerplate</div>
-        {/* notice that we then pass those unpacked props into the Counter component */}
-        <Counter counter={counter} actions={actions}/>
-        {/* eslint-disable-next-line react/jsx-no-undef */}
-        <JobDetails actions={jobDetailsActions} data={jobDetails}/>
+const calculatePageHeight = () => {
+  let breadCrumbHeight = 36;
+  return window.innerHeight - (breadCrumbHeight) + 'px';
+};
+
+const columnHeightCss = {
+  height: calculatePageHeight(),
+  overflowY: 'scroll'
+};
+
+const App = () => {
+  return (
+    <div>
+      <Breadcrumb/>
+      <div className="container">
+        <Grid container>
+          <Grid item xs={12} md={3}>
+            <Paper style={columnHeightCss}>
+              <LeftSideBar/>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Paper style={columnHeightCss}>
+              <MidContent/>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <Paper style={columnHeightCss}>
+              <RightSideBar/>
+            </Paper>
+          </Grid>
+        </Grid>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-
-/**
- * Keep in mind that 'state' isn't the state of local object, but your single
- * state in this Redux application. 'counter' is a property within our store/state
- * object. By mapping it to props, we can pass it to the child component Counter.
- */
-function mapStateToProps(state) {
-  return {
-    counter: state.counter,
-    jobDetails: state.jobDetails
-  };
-}
-
-/**
- * Turns an object whose values are 'action creators' into an object with the same
- * keys but with every action creator wrapped into a 'dispatch' call that we can invoke
- * directly later on. Here we imported the actions specified in 'CounterActions.js' and
- * used the bindActionCreators function Redux provides us.
- *
- * More info: http://redux.js.org/docs/api/bindActionCreators.html
- */
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(CounterActions, dispatch),
-    jobDetailsActions: bindActionCreators(JobDetailsActions, dispatch)
-  };
-}
-
-/**
- * 'connect' is provided to us by the bindings offered by 'react-redux'. It simply
- * connects a React component to a Redux store. It never modifies the component class
- * that is passed into it, it actually returns a new connected componet class for use.
- *
- * More info: https://github.com/rackt/react-redux
- */
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;

@@ -11,9 +11,9 @@ const JobDetails = ({ actions, data }) => {
       Title:
       <TextField
         label="Name"
-        defaultValue={data.data.job_title}
         margin="normal"
       />
+      {data.data.job_title}
     </div>
   );
 };
