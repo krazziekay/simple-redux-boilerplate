@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import TextField from '@material-ui/core/TextField';
 
-const JobDetails = () => {
-  const [details, setDetails] = useState('T');
+const JobDetails = ({ actions, data }) => {
+  useEffect(() => {
+    actions.fetchJobDetails();
+  }, []);
 
   return (
     <div>
-      {details}
+      Title:
+      <TextField
+        label="Name"
+        defaultValue={data.data.job_title}
+        margin="normal"
+      />
     </div>
   );
 };

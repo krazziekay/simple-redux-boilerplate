@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as CounterActions from '../actions/CounterActions';
+import * as JobDetailsActions from '../actions/JobDetailsActions';
 import Counter from '../components/Counter';
+import JobDetails from '../components/JobDetails';
 
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
@@ -12,12 +14,19 @@ import Counter from '../components/Counter';
 class App extends Component {
   render() {
     // we can use ES6's object destructuring to effectively 'unpack' our props
-    const { counter, actions } = this.props;
+    const {
+      counter,
+      actions,
+      jobDetails,
+      jobDetailsActions
+    } = this.props;
     return (
       <div className="main-app-container">
         <div className="main-app-nav">Simple Redux Boilerplate</div>
         {/* notice that we then pass those unpacked props into the Counter component */}
-        <Counter counter={counter} actions={actions} />
+        <Counter counter={counter} actions={actions}/>
+        {/* eslint-disable-next-line react/jsx-no-undef */}
+        <JobDetails actions={jobDetailsActions} data={jobDetails}/>
       </div>
     );
   }
@@ -31,7 +40,8 @@ class App extends Component {
  */
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    counter: state.counter,
+    jobDetails: state.jobDetails
   };
 }
 
@@ -45,7 +55,8 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(CounterActions, dispatch)
+    actions: bindActionCreators(CounterActions, dispatch),
+    jobDetailsActions: bindActionCreators(JobDetailsActions, dispatch)
   };
 }
 

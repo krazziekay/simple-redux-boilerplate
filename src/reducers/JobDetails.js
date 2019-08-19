@@ -8,16 +8,22 @@ import {
 
 const INITIAL = {
   data: {
-    jobId: 1,
-    title: 'First Job',
+    job_id: 1,
+    job_title: 'Dummy',
   },
   fetching: false,
   error: ''
 };
 
 
-const fetchingJob = (obj) => {
-  const fetchingJobs = Object.assign({}, obj);
+const loadJobs = (state, payload) => {
+  const fetchingJobs = Object.assign({}, state);
+  fetchingJobs.data = payload;
+  return fetchingJobs;
+};
+
+const fetchingJob = (state) => {
+  const fetchingJobs = Object.assign({}, state);
   fetchingJobs.fetching = true;
   return fetchingJobs;
 };
@@ -31,7 +37,7 @@ const errorsInJob = (obj) => {
 export default (state = INITIAL, action) => {
   switch (action.type) {
     case GET_JOB_DETAILS:
-      return state;
+      return loadJobs(state, action.payload);
     case EDIT_JOB_DETAILS:
       return state;
     case FETCHING_JOB_DETAILS:
