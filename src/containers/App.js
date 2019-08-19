@@ -1,9 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as CounterActions from '../actions/CounterActions';
 import Counter from '../components/Counter';
-import Footer from '../components/Footer';
 
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
@@ -19,16 +18,11 @@ class App extends Component {
         <div className="main-app-nav">Simple Redux Boilerplate</div>
         {/* notice that we then pass those unpacked props into the Counter component */}
         <Counter counter={counter} actions={actions} />
-        <Footer />
       </div>
     );
   }
 }
 
-App.propTypes = {
-  counter: PropTypes.number.isRequired,
-  actions: PropTypes.object.isRequired
-};
 
 /**
  * Keep in mind that 'state' isn't the state of local object, but your single

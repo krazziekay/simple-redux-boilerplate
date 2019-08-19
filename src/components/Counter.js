@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
 export default class Counter extends Component {
   constructor(props, context) {
@@ -23,15 +23,12 @@ export default class Counter extends Component {
         <div className="counter-even-label">{this.props.counter % 2 === 0 ? 'even' : 'odd'}</div>
         <br />
         <div className="counter-buttons">
+          {/* eslint-disable-next-line react/jsx-no-bind */}
           <button onClick={() => {this.handleDecrement();}}>-</button>
+          {/* eslint-disable-next-line react/jsx-no-bind */}
           <button onClick={() => {this.handleIncrement();}}>+</button>
         </div>
       </div>
     );
   }
 }
-
-Counter.propTypes = {
-  counter: PropTypes.number.isRequired,
-  actions: PropTypes.object.isRequired
-};
