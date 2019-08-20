@@ -9,9 +9,9 @@ const MidContent = ({ jobDetailsActions, jobDetails }) => {
   }, []);
 
   return (
-    <div className="mid-content">
-      MidContent
-      {/* eslint-disable-next-line react/jsx-no-undef */}
+    <div className="mid-content no-scroll-bar-div">
+
+        {/* eslint-disable-next-line react/jsx-no-undef */}
       <JobDetails actions={jobDetailsActions} data={jobDetails}/>
     </div>
   );

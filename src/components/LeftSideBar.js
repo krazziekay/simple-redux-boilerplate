@@ -14,15 +14,10 @@ import InsertCommentIcon from '@material-ui/icons/InsertComment';
 import TodayIcon from '@material-ui/icons/Today';
 import HistoryIcon from '@material-ui/icons/History';
 import Divider from '@material-ui/core/Divider';
-import Typography from "@material-ui/core/Typography";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#F3F3F3',
-  },
   bottom: {
     fontWeight: 'bold'
   },
@@ -36,6 +31,11 @@ const useStyles = makeStyles(theme => ({
   bottomMenuList: {
     color: '#5E6366',
     fontSize: 14
+  },
+  bottomMenuListIcons: {
+    color: '#5E6366',
+    fontSize: 14,
+    marginLeft: 14
   }
 }));
 
@@ -94,8 +94,8 @@ const LeftSideBar = ({ actions, data }) => {
 
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <List component="nav" aria-label="main mailbox folders">
+    <div className="no-scroll-bar-div left-side-bar">
+      <List className="p-l-12" component="nav" aria-label="main mailbox folders">
         {
           topMenuItems.map(item =>
             <ListItem button>
@@ -109,10 +109,13 @@ const LeftSideBar = ({ actions, data }) => {
         <Divider variant="middle"/>
         <Typography className={classes.helpText}>Help & Support</Typography>
 
-        <List component="nav" aria-label="main mailbox folders">
+        <List className="p-l-12" component="nav" aria-label="main mailbox folders">
           {
             bottomMenuItems.map(item =>
               <ListItem button>
+                <ListItemIcon>
+                  <FiberManualRecordIcon className={classes.bottomMenuListIcons}/>
+                </ListItemIcon>
                 <ListItemText className={classes.bottomMenuList} primary={item.title}/>
               </ListItem>
             )

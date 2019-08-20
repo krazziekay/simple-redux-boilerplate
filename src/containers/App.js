@@ -6,14 +6,16 @@ import LeftSideBar from '../components/LeftSideBar';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
+
 const calculatePageHeight = () => {
-  let breadCrumbHeight = 36;
+  let breadCrumbHeight = 38;
   return window.innerHeight - (breadCrumbHeight) + 'px';
 };
 
 const columnHeightCss = {
   height: calculatePageHeight(),
-  overflowY: 'scroll'
+  overflow: 'hidden',
+  position: 'relative',
 };
 
 const App = () => {
@@ -22,17 +24,17 @@ const App = () => {
       <Breadcrumb/>
       <div className="container">
         <Grid container>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={2}>
             <Paper style={columnHeightCss}>
               <LeftSideBar/>
             </Paper>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={8}>
             <Paper style={columnHeightCss}>
               <MidContent/>
             </Paper>
           </Grid>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={2}>
             <Paper style={columnHeightCss}>
               <RightSideBar/>
             </Paper>

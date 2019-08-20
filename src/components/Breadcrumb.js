@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     display: 'flex',
-    fontSize: 12,
+    fontSize: 14,
   },
   icon: {
     marginRight: theme.spacing(0.5),

@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:100,400);
+@import url(https://fonts.googleapis.com/css?family=Quicksand:100,400);
 
 $main-bg-color: #f1f2f0;
 $accent-blue: #37bbe4;
@@ -6,9 +7,12 @@ $accent-gray: #e1e0dd;
 $accent-black: #35342f;
 $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
+$quicksand: Quicksand;
+$roboto: Roboto;
 
 body {
   margin: 0;
+  font-family: $quicksand;
 }
 
 %bordered {
@@ -19,4 +23,21 @@ body {
   background-color: #fff;
   display: flex;
   //width: 70%; //remove it later
+}
+
+.no-scroll-bar-div {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+  padding-right: 17px;
+  box-sizing: content-box;
+}
+
+.left-side-bar {
+  background-color: #F3F3F3;
+}
+
+.right-side-bar {
+  background-color: #F1F3F4;
 }
