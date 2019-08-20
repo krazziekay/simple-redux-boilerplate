@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Breadcrumb from '../components/Breadcrumb';
-import RightSideBar from '../components/RightSideBar';
-import MidContent from '../components/MidContent';
-import LeftSideBar from '../components/LeftSideBar';
+import RightSideBar from '../components/JobCard/RightSideBar';
+import MidContent from '../components/JobCard/MidContent';
+import LeftSideBar from '../components/JobCard/LeftSideBar';
 import Grid from '@material-ui/core/Grid';
 
 

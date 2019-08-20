@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
-import PersonIcon from '@material-ui/icons/Person';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import PaymentIcon from '@material-ui/icons/Payment';
-import PermMediaIcon from '@material-ui/icons/PermMedia';
-import MoneyOffIcon from '@material-ui/icons/MoneyOff';
-import InsertCommentIcon from '@material-ui/icons/InsertComment';
-import TodayIcon from '@material-ui/icons/Today';
-import HistoryIcon from '@material-ui/icons/History';
+import { topMenuItems, bottomMenuItems } from '../../common/leftSideMenu';
 import Divider from '@material-ui/core/Divider';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import * as DrawerStateActions from '../../actions/DrawerStateAction';
 
 const useStyles = makeStyles(theme => ({
   bottom: {
@@ -40,56 +35,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const topMenuItems = [
-  {
-    icon: <BusinessCenterIcon style={{ color: '#2FA84F' }}/>,
-    title: 'Job Details'
-  },
-  {
-    icon: <PersonIcon style={{ color: '#367BF5' }}/>,
-    title: 'Customer Details'
-  },
-  {
-    icon: <BusinessCenterIcon style={{ color: '#F3AA18' }}/>,
-    title: 'Estimates & Quotes'
-  },
-  {
-    icon: <AttachMoneyIcon style={{ color: '#EA3D2F' }}/>,
-    title: 'Sales & Invoices'
-  },
-  {
-    icon: <PaymentIcon style={{ color: '#367BF5' }}/>,
-    title: 'Payments'
-  },
-  {
-    icon: <MoneyOffIcon style={{ color: '#ea1c96' }}/>,
-    title: 'Credit Notes'
-  },
-  {
-    icon: <PermMediaIcon style={{ color: '#EA3D2F' }}/>,
-    title: 'Media'
-  },
-  {
-    icon: <InsertCommentIcon style={{ color: '#2FA84F' }}/>,
-    title: 'Notes'
-  },
-  {
-    icon: <TodayIcon style={{ color: '#F3AA18' }}/>,
-    title: 'Visits'
-  },
-  {
-    icon: <HistoryIcon style={{ color: '#367BF5' }}/>,
-    title: 'History'
-  },
-];
-const bottomMenuItems = [
-  { title: 'Tutorial' },
-  { title: 'Knowledge Base' },
-  { title: 'Chat with support' },
-  { title: 'Send Feedback' },
-];
 
-const LeftSideBar = ({ actions, data, heightStyle }) => {
+const LeftSideBar = ({ drawerStateActions, heightStyle }) => {
   useEffect(() => {
   }, []);
 
@@ -102,7 +49,7 @@ const LeftSideBar = ({ actions, data, heightStyle }) => {
           <List className="p-l-12" component="nav" aria-label="main mailbox folders">
             {
               topMenuItems.map(item =>
-                <ListItem button>
+                <ListItem button onClick={() => drawerStateActions.selectOption(item.id)}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.title}/>
                 </ListItem>
@@ -134,7 +81,7 @@ const LeftSideBar = ({ actions, data, heightStyle }) => {
         <List className="p-l-12" component="nav" aria-label="main mailbox folders">
           {
             topMenuItems.map(item =>
-              <ListItem button>
+              <ListItem button onClick={() => drawerStateActions.selectOption(item.id)}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.title}/>
               </ListItem>
@@ -163,4 +110,10 @@ const LeftSideBar = ({ actions, data, heightStyle }) => {
   );
 };
 
-export default LeftSideBar;
+export default connect(state => ({
+    drawerState: state.drawerState
+  }),
+  dispatch => ({
+    drawerStateActions: bindActionCreators(DrawerStateActions, dispatch),
+  })
+)(LeftSideBar);

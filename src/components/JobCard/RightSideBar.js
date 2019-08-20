@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QuickActions from './QuickActions';
-import { Colors } from './../reusable/colors';
-import CardInfo from './../reusable/cardInfo';
+import { Colors } from '../../common/colors';
+import CardInfo from '../../common/cardInfo';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
