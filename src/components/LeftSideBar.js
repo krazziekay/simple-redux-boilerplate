@@ -16,6 +16,7 @@ import HistoryIcon from '@material-ui/icons/History';
 import Divider from '@material-ui/core/Divider';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles(theme => ({
   bottom: {
@@ -88,39 +89,75 @@ const bottomMenuItems = [
   { title: 'Send Feedback' },
 ];
 
-const LeftSideBar = ({ actions, data }) => {
+const LeftSideBar = ({ actions, data, heightStyle }) => {
   useEffect(() => {
   }, []);
 
   const classes = useStyles();
   return (
-    <div className="no-scroll-bar-div left-side-bar">
-      <List className="p-l-12" component="nav" aria-label="main mailbox folders">
-        {
-          topMenuItems.map(item =>
-            <ListItem button>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.title}/>
-            </ListItem>
-          )
-        }
-      </List>
-      <div>
-        <Divider variant="middle"/>
-        <Typography className={classes.helpText}>Help & Support</Typography>
+    <div>
+      { /* For Desktop Views */}
+      <Paper style={heightStyle} className="desktop">
+        <div className="no-scroll-bar-div left-side-bar ">
+          <List className="p-l-12" component="nav" aria-label="main mailbox folders">
+            {
+              topMenuItems.map(item =>
+                <ListItem button>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.title}/>
+                </ListItem>
+              )
+            }
+          </List>
+          <div>
+            <Divider variant="middle"/>
+            <Typography className={classes.helpText}>Help & Support</Typography>
 
+            <List className="p-l-12" component="nav" aria-label="main mailbox folders">
+              {
+                bottomMenuItems.map(item =>
+                  <ListItem button>
+                    <ListItemIcon>
+                      <FiberManualRecordIcon className={classes.bottomMenuListIcons}/>
+                    </ListItemIcon>
+                    <ListItemText className={classes.bottomMenuList} primary={item.title}/>
+                  </ListItem>
+                )
+              }
+            </List>
+          </div>
+        </div>
+      </Paper>
+
+      { /* For Mobile Views */}
+      <div className="left-side-bar mobile">
         <List className="p-l-12" component="nav" aria-label="main mailbox folders">
           {
-            bottomMenuItems.map(item =>
+            topMenuItems.map(item =>
               <ListItem button>
-                <ListItemIcon>
-                  <FiberManualRecordIcon className={classes.bottomMenuListIcons}/>
-                </ListItemIcon>
-                <ListItemText className={classes.bottomMenuList} primary={item.title}/>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.title}/>
               </ListItem>
             )
           }
         </List>
+        <div>
+          <Divider variant="middle"/>
+          <Typography className={classes.helpText}>Help & Support</Typography>
+
+          <List className="p-l-12" component="nav" aria-label="main mailbox folders">
+            {
+              bottomMenuItems.map(item =>
+                <ListItem button>
+                  <ListItemIcon>
+                    <FiberManualRecordIcon className={classes.bottomMenuListIcons}/>
+                  </ListItemIcon>
+                  <ListItemText className={classes.bottomMenuList} primary={item.title}/>
+                </ListItem>
+              )
+            }
+          </List>
+        </div>
       </div>
     </div>
   );
