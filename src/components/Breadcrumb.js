@@ -10,7 +10,7 @@ import FindInPageIcon from '@material-ui/icons/FindInPage';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(1, 2),
+    padding: theme.spacing(2, 4),
     backgroundColor: '#F7F9FA',
   },
   link: {

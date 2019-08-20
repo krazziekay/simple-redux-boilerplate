@@ -12,18 +12,12 @@ const styles = {
     backgroundColor: '#F1F3F4',
     paddingLeft: 12
   },
-  divider: {
-    margin: '24px 0',
-    borderTop: '1px solid #A6ADAF'
-  },
   jobText: {
     padding: '0 24px'
   }
 };
 
-const RightSideBar = ({ actions, data, heightStyle }) => {
-  useEffect(() => {
-  }, []);
+const RightSideBar = ({ heightStyle }) => {
 
   return (
     <div>
@@ -44,7 +38,7 @@ const RightSideBar = ({ actions, data, heightStyle }) => {
             <Typography style={{ color: Colors.primary }}>Total Sold - $2,400</Typography>
             <Typography style={{ color: Colors.success2 }}>Revenue VS Target - 83%</Typography>
           </div>
-          <Divider style={styles.divider}/>
+          <Divider/>
           <QuickActions/>
         </div>
       </Paper>
@@ -58,7 +52,7 @@ const RightSideBar = ({ actions, data, heightStyle }) => {
             <CardInfo index={'Credit'} value={'$0'} valueColor={Colors.warning}/>
             <CardInfo index={'Balance'} value={'$100,000.00'} valueColor={Colors.danger}/>
           </div>
-          <Divider style={styles.divider}/>
+          <Divider/>
           <div style={styles.jobText}>
             <Typography>Plumbing / Blocked Drain</Typography>
             <Typography>
@@ -67,7 +61,7 @@ const RightSideBar = ({ actions, data, heightStyle }) => {
             <Typography style={{ color: Colors.primary }}>Total Sold - $2,400</Typography>
             <Typography style={{ color: Colors.success2 }}>Revenue VS Target - 83%</Typography>
           </div>
-          <Divider style={styles.divider}/>
+          <Divider/>
           <QuickActions/>
         </div>
       </Paper>

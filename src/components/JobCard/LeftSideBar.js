@@ -26,11 +26,11 @@ const useStyles = makeStyles(theme => ({
   },
   bottomMenuList: {
     color: '#5E6366',
-    fontSize: 14
+    fontSize: 12
   },
   bottomMenuListIcons: {
     color: '#5E6366',
-    fontSize: 14,
+    fontSize: 12,
     marginLeft: 14
   }
 }));

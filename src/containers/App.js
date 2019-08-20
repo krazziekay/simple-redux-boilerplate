@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 
 
 const calculatePageHeight = () => {
-  let breadCrumbHeight = 38;
+  let breadCrumbHeight = 53;
   return window.innerHeight - (breadCrumbHeight) + 'px';
 };
 
