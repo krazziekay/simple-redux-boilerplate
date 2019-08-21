@@ -44,25 +44,14 @@ const RightSideBar = ({ heightStyle }) => {
       </Paper>
 
 
-      <Paper style={heightStyle} className="mobile">
+      <Paper className="mobile">
         <div className="" style={styles.rightSideBar}>
-          <div className="sales-summary">
+          <div className="sales-summary p-t-12 p-b-12">
             <CardInfo index={'Sold'} value={'$112,500.5'} valueColor={Colors.primary}/>
             <CardInfo index={'Paid'} value={'$12,500.5'} valueColor={Colors.success}/>
             <CardInfo index={'Credit'} value={'$0'} valueColor={Colors.warning}/>
             <CardInfo index={'Balance'} value={'$100,000.00'} valueColor={Colors.danger}/>
           </div>
-          <Divider/>
-          <div style={styles.jobText}>
-            <Typography>Plumbing / Blocked Drain</Typography>
-            <Typography>
-              Average Ticket Sale - <span className="text-muted">$2,586</span>
-            </Typography>
-            <Typography style={{ color: Colors.primary }}>Total Sold - $2,400</Typography>
-            <Typography style={{ color: Colors.success2 }}>Revenue VS Target - 83%</Typography>
-          </div>
-          <Divider/>
-          <QuickActions/>
         </div>
       </Paper>
     </div>

@@ -11,6 +11,9 @@ import Divider from '@material-ui/core/Divider';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import * as DrawerStateActions from '../../actions/DrawerStateAction';
 
 const useStyles = makeStyles(theme => ({
@@ -36,11 +39,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const LeftSideBar = ({ drawerStateActions, heightStyle }) => {
-  useEffect(() => {
-  }, []);
-
+const LeftSideBar = ({ drawerState, drawerStateActions, heightStyle }) => {
   const classes = useStyles();
+
   return (
     <div>
       { /* For Desktop Views */}
@@ -78,39 +79,30 @@ const LeftSideBar = ({ drawerStateActions, heightStyle }) => {
 
       { /* For Mobile Views */}
       <div className="left-side-bar mobile">
-        <List className="p-l-12" component="nav" aria-label="main mailbox folders">
-          {
-            topMenuItems.map(item =>
-              <ListItem button onClick={() => drawerStateActions.selectOption(item.id)}>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.title}/>
-              </ListItem>
-            )
-          }
-        </List>
-        <div>
-          <Divider variant="middle"/>
-          <Typography className={classes.helpText}>Help & Support</Typography>
-
-          <List className="p-l-12" component="nav" aria-label="main mailbox folders">
+        <AppBar position="static" color="default">
+          <Tabs
+            value={drawerState - 1}
+            variant="scrollable"
+            scrollButtons="on"
+            indicatorColor="primary"
+            textColor="primary"
+            aria-label="scrollable force tabs example"
+          >
             {
-              bottomMenuItems.map(item =>
-                <ListItem button>
-                  <ListItemIcon>
-                    <FiberManualRecordIcon className={classes.bottomMenuListIcons}/>
-                  </ListItemIcon>
-                  <ListItemText className={classes.bottomMenuList} primary={item.title}/>
-                </ListItem>
+              topMenuItems.map(item =>
+                <Tab label={item.title} icon={item.icon}
+                     onClick={() => drawerStateActions.selectOption(item.id)}/>
               )
             }
-          </List>
-        </div>
+          </Tabs>
+        </AppBar>
       </div>
     </div>
   );
 };
 
-export default connect(state => ({
+export default connect(
+  state => ({
     drawerState: state.drawerState
   }),
   dispatch => ({
