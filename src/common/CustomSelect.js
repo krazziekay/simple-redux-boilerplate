@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 175,
+    minWidth: 150,
     textAlign: 'center'
   },
   selectEmpty: {
@@ -22,12 +22,25 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const BLANKFUNCTION = () => {
+};
 
-const CustomSelect = ({ options, selected, styles }) => {
-
+/**
+ *
+ * @param options => array of options of object {id, value}
+ * @param selected => selected object {id, value}
+ * @param styles => css
+ * @param lowHeight => for changing the height of the Select(changing the padding spaces)
+ * @param selectAction => function to handle the click action on the select
+ * @returns {*}
+ * @constructor
+ */
+const CustomSelect = ({ name, options, selected, styles, small, selectAction = BLANKFUNCTION }) => {
+  // Options
   const classes = useStyles();
   const [values, setValues] = React.useState(selected);
 
+  // For the label
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
@@ -36,6 +49,7 @@ const CustomSelect = ({ options, selected, styles }) => {
 
   const handleChange = (event) => {
     setValues(options.filter(option => option.id === event.target.value)[0]);
+    selectAction(event);
   };
 
   return (
@@ -45,9 +59,10 @@ const CustomSelect = ({ options, selected, styles }) => {
           Job Status
         </InputLabel>
         <Select
+          className={small && 'customSelectLowHeight'}
           value={values.id}
           onChange={handleChange}
-          input={<OutlinedInput labelWidth={labelWidth} name="job_status" id="jobStatus"/>}
+          input={<OutlinedInput labelWidth={labelWidth} name={name} id={name}/>}
         >
           {options.map(option =>
             <MenuItem value={option.id}>{option.value}</MenuItem>

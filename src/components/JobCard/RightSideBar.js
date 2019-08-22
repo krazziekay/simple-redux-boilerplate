@@ -22,7 +22,7 @@ const RightSideBar = ({ heightStyle }) => {
   return (
     <div>
       <Paper style={heightStyle} className="desktop">
-        <div className="no-scroll-bar-div" style={styles.rightSideBar}>
+        <div className="no-scroll-bar-div right-side-bar" style={styles.rightSideBar}>
           <div className="sales-summary">
             <CardInfo index={'Sold'} value={'$112,500.5'} valueColor={Colors.primary}/>
             <CardInfo index={'Paid'} value={'$12,500.5'} valueColor={Colors.success}/>

@@ -35,6 +35,9 @@ const useStyles = makeStyles(theme => ({
     color: '#5E6366',
     fontSize: 12,
     marginLeft: 14
+  },
+  listItem: {
+    padding: '8px 0'
   }
 }));
 
@@ -50,7 +53,7 @@ const LeftSideBar = ({ drawerState, drawerStateActions, heightStyle }) => {
           <List className="p-l-12" component="nav" aria-label="main mailbox folders">
             {
               topMenuItems.map(item =>
-                <ListItem button onClick={() => drawerStateActions.selectOption(item.id)}>
+                <ListItem className={classes.listItem} button onClick={() => drawerStateActions.selectOption(item.id)}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.title}/>
                 </ListItem>
@@ -64,7 +67,7 @@ const LeftSideBar = ({ drawerState, drawerStateActions, heightStyle }) => {
             <List className="p-l-12" component="nav" aria-label="main mailbox folders">
               {
                 bottomMenuItems.map(item =>
-                  <ListItem button>
+                  <ListItem button className={classes.listItem}>
                     <ListItemIcon>
                       <FiberManualRecordIcon className={classes.bottomMenuListIcons}/>
                     </ListItemIcon>

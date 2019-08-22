@@ -15,10 +15,6 @@ body {
   font-family: $quicksand;
 }
 
-%bordered {
-  border: 1px solid $accent-black;
-}
-
 .container {
   background-color: #fff;
   display: flex;
@@ -36,16 +32,32 @@ body {
 
 .left-side-bar {
   background-color: #F3F3F3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .right-side-bar {
   background-color: #F1F3F4;
 }
 
+.job-details-header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 /**
 Overriding Material CSS
  */
+.customSelectLowHeight .MuiOutlinedInput-input {
+  padding: 10px 14px !important;
+}
+
+.MuiTab-wrapper {
+  flex-direction: row !important;
+}
+
 .MuiDivider-root {
   margin: 24px 0 !important;
   border-top: 1px solid rgb(166, 173, 175) !important;
@@ -53,6 +65,7 @@ Overriding Material CSS
 
 .MuiFab-colorInherit {
   background-color: #fff !important;
+
   &:hover {
     background-color: #f2f2f2 !important;
   }

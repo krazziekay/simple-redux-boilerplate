@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
  */
 import './styles/main.scss';
 import './styles/util.scss';
-import './styles/views.scss';
+import './styles/mediaQuery.scss';
 
 /**
  * Both configureStore and Root are required conditionally.

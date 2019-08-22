@@ -1,0 +1,32 @@
+//Mixin for overriding font size in media query
+@mixin change-font-size($class, $size) {
+  .#{$class} .MuiTypography-body1, .MuiCard-root {
+    font-size: #{$size}px !important;
+  }
+}
+
+@mixin left-side-bar-tab-mobile-view {
+  .MuiTab-root {
+    min-height: unset !important;
+  }
+  .PrivateTabScrollButton-root-240 {
+    display: none !important;
+  }
+  .MuiSvgIcon-root {
+    margin-right: 8px !important;
+  }
+}
+
+@mixin flex-to-centered-block($class) {
+  .#{$class} {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@mixin centered-block-to-flex($class) {
+  .#{$class} {
+    flex-direction: row;
+    text-align: left;
+  }
+}
