@@ -13,6 +13,12 @@ const jobStatus = [
   { id: 5, value: 'Callback' },
 ];
 
+const clientTypes = [
+  { id: 1, value: 'Landlord' },
+  { id: 2, value: 'Tenant' },
+  { id: 3, value: 'Owner' },
+
+];
 const jobCategories = [
   { id: 1, value: 'Plumbing' },
   { id: 2, value: 'Electrical' },
@@ -76,7 +82,28 @@ const INITIAL = {
     job_priority: 1,
     lead_source: 1,
     callout_fee: 1,
+    client: {
+      id: 1,
+      first_name: 'Alexander',
+      client_type: 1,
+      last_name: 'Alexander',
+      address: 'Alexander',
+      phone: '02 8080 8080',
+      mobile: '0404 202 512',
+      email: 'somethingemail@somethingemail.com'
+    },
+    mailing: {
+      id: 2,
+      first_name: 'Alexander2',
+      client_type: 2,
+      last_name: 'Alexander2',
+      address: 'Alexander2',
+      phone: '02 8080 80820',
+      mobile: '0404 202 5122',
+      email: 'somethingemail@somethingemail2.com'
+    },
 
+    all_client_types: clientTypes,
     all_job_category: jobCategories,
     all_job_status: jobStatus,
     all_job_types: jobTypes,
@@ -104,7 +131,7 @@ const fetchingJob = (state) => {
 
 const changeJobStatus = (state, newStatus) => {
   const currentJobDetails = Object.assign({}, state);
-  currentJobDetails.job_status = newStatus;
+  currentJobDetails.data.job_status = newStatus;
   return currentJobDetails;
 };
 

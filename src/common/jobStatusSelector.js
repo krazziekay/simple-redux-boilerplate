@@ -3,6 +3,7 @@ import CustomSelect from './CustomSelect';
 import { connect } from 'react-redux';
 import * as JobDetailsActions from '../actions/JobDetailsActions';
 import { bindActionCreators } from 'redux';
+import { ObjectGeneratorForCustomSelect } from '../helper/helper';
 
 
 const JobStatusSelector = ({ jobDetails, jobDetailsAction }) => {
@@ -16,8 +17,8 @@ const JobStatusSelector = ({ jobDetails, jobDetailsAction }) => {
   return (<div>
     <CustomSelect label="Job Status"
       name="job_status"
+      selected={ObjectGeneratorForCustomSelect(jobDetails.job_status)}
       small options={jobDetails.all_job_status}
-      selected={jobDetails.all_job_status[2]}
       selectAction={handleChange}
     />
   </div>);

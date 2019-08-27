@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import CreateIcon from '@material-ui/icons/Create';
-import { Colors } from '../../common/colors';
 import CustomSelect from './../../common/CustomSelect';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import JobStatusSelector from './../../common/jobStatusSelector';
 import * as JobDetailsActions from './../../actions/JobDetailsActions';
 import ActionButtons from '../../common/actionButtons';
+import { makeStyles } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import CreateIcon from '@material-ui/icons/Create';
+import { Colors } from "../../common/colors";
 
 
-const style = {
+const useStyle = makeStyles(theme => ({
   headerStyle: {
     fontFamily: 'Quicksand',
     fontSize: 34,
-    verticalAlign: 'middle'
-  },
-  headerStyleMobile: {
-    fontFamily: 'Quicksand',
-    fontSize: 18,
-    fontWeight: 'bold',
-    verticalAlign: 'middle'
+    verticalAlign: 'middle',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 18,
+      fontWeight: 'bold',
+
+    }
   },
   iconStyle: {
     color: Colors.success,
@@ -37,10 +37,11 @@ const style = {
     border: '1px solid #ccc',
     boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)'
   }
-};
+}));
 
 
 const JobDetailsHeader = ({
+                            classes,
                             editFlag,
                             setEditFlag,
                             jobDetails,
@@ -48,19 +49,13 @@ const JobDetailsHeader = ({
 
   return (<div className="job-details-header-container">
     <div>
-      <div className="desktop">
-        <Typography variant="span" style={style.headerStyle}>Job #{jobDetails.job_id}</Typography>
+      <div>
+        <Typography variant="span" className={classes.headerStyle}>Job #{jobDetails.job_id}</Typography>
         {
-          editFlag && <Button style={style.buttonStyle} onClick={() => setEditFlag(false)} color="inherit" size="medium" variant="outlined">
-            <CreateIcon style={style.iconStyle}/>Edit
+          editFlag && <Button className={classes.buttonStyle} onClick={() => setEditFlag(false)} color="inherit" size="medium" variant="outlined">
+            <CreateIcon className={classes.iconStyle}/>Edit
           </Button>
         }
-      </div>
-      <div className="mobile">
-        <Typography variant="span" style={style.headerStyleMobile}>Job #12345</Typography>
-        <Button style={style.buttonStyle} color="inherit" size="medium" variant="outlined">
-          <CreateIcon style={style.iconStyle}/>Edit
-        </Button>
       </div>
     </div>
     <JobStatusSelector/>
@@ -71,7 +66,7 @@ const JobDetailsHeader = ({
 const JobDetails = ({ jobDetails, jobDetailsAction }) => {
   const [form, setForm] = useState(jobDetails);
   const [editFlag, setEditFlag] = useState(true);
-
+  const classes = useStyle();
   useEffect(() => {
     setForm(currentForm => Object.assign({ selected_job_type: jobDetails.all_job_types[0].types }, currentForm));
   }, []);
@@ -108,7 +103,7 @@ const JobDetails = ({ jobDetails, jobDetailsAction }) => {
   };
 
   return (<div className="p-l-24 p-r-24 p-t-24 p-b-24">
-    <JobDetailsHeader editFlag={editFlag} setEditFlag={setEditFlag} jobDetails={jobDetails} form={form} setForm={setForm}/>
+    <JobDetailsHeader classes={classes} editFlag={editFlag} setEditFlag={setEditFlag} jobDetails={jobDetails} form={form} setForm={setForm}/>
     <Divider variant="middle"/>
     <div>
       <form action="">
