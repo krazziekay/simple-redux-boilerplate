@@ -7,6 +7,11 @@ import CustomSelect from './../../common/CustomSelect';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import JobStatusSelector from './../../common/jobStatusSelector';
+import * as JobDetailsActions from './../../actions/JobDetailsActions';
+import ActionButtons from '../../common/actionButtons';
 
 
 const style = {
@@ -34,82 +39,50 @@ const style = {
   }
 };
 
-const JOBSTATUSES = [
-  { id: 1, value: 'New' },
-  { id: 2, value: 'Ongoing' },
-  { id: 3, value: 'Completed' },
-  { id: 4, value: 'Cancelled' },
-  { id: 5, value: 'Callback' },
-];
 
-const jobCategories = [
-  { id: 1, value: 'Plumbing' },
-  { id: 2, value: 'Electrical' },
-  { id: 3, value: 'HVAC' },
-];
-const jobTypes = [
-  {
-    id: 1,
-    category: 'Plumbing',
-    types: [
-      { id: 1, value: 'Blocked Drain' },
-      { id: 2, value: 'Blocked Drain 1' },
-      { id: 3, value: 'Blocked Drain 2' },
-    ]
-  },
-  {
-    id: 2,
-    category: 'Electrical',
-    types: [
-      { id: 1, value: 'Electrical' },
-      { id: 2, value: 'Electrical 1' },
-      { id: 3, value: 'Electrical 2' },
-    ]
-  },
-  {
-    id: 3,
-    category: 'HVAC',
-    types: [
-      { id: 1, value: 'HVAC' },
-      { id: 2, value: 'HVAC 1' },
-      { id: 3, value: 'HVAC 2' },
-    ]
-  }
-];
+const JobDetailsHeader = ({
+                            editFlag,
+                            setEditFlag,
+                            jobDetails,
+                          }) => {
 
-const jobPriority = [];
-const leadSource = [];
-const calloutFee = [];
-
-
-const JobDetailsHeader = () => <div className="job-details-header-container">
-  <div>
-    <div className="desktop">
-      <Typography variant="span" style={style.headerStyle}>Job #12345</Typography>
-      <Button style={style.buttonStyle} color="inherit" size="medium" variant="outlined">
-        <CreateIcon style={style.iconStyle}/>Edit
-      </Button>
+  return (<div className="job-details-header-container">
+    <div>
+      <div className="desktop">
+        <Typography variant="span" style={style.headerStyle}>Job #{jobDetails.job_id}</Typography>
+        {
+          editFlag && <Button style={style.buttonStyle} onClick={() => setEditFlag(false)} color="inherit" size="medium" variant="outlined">
+            <CreateIcon style={style.iconStyle}/>Edit
+          </Button>
+        }
+      </div>
+      <div className="mobile">
+        <Typography variant="span" style={style.headerStyleMobile}>Job #12345</Typography>
+        <Button style={style.buttonStyle} color="inherit" size="medium" variant="outlined">
+          <CreateIcon style={style.iconStyle}/>Edit
+        </Button>
+      </div>
     </div>
-    <div className="mobile">
-      <Typography variant="span" style={style.headerStyleMobile}>Job #12345</Typography>
-      <Button style={style.buttonStyle} color="inherit" size="medium" variant="outlined">
-        <CreateIcon style={style.iconStyle}/>Edit
-      </Button>
-    </div>
-  </div>
-  <CustomSelect small options={JOBSTATUSES} selected={JOBSTATUSES[2]} selectAction={() => {
-  }}/>
-</div>;
+    <JobStatusSelector/>
+  </div>);
+};
 
 
-const JobDetails = ({}) => {
-  const [form, setForm] = useState({});
+const JobDetails = ({ jobDetails, jobDetailsAction }) => {
+  const [form, setForm] = useState(jobDetails);
+  const [editFlag, setEditFlag] = useState(true);
 
   useEffect(() => {
-    if (!form.jobTypes) {
-      setForm(currentForm => Object.assign({ job_types: jobTypes[0].types }, currentForm));
-    }
+    setForm(currentForm => Object.assign({ selected_job_type: jobDetails.all_job_types[0].types }, currentForm));
   }, []);
+
+  /**
+   * Save the job update
+   */
+  const submit = () => {
+    setEditFlag(true);
+    jobDetailsAction.editJobDetails(form);
+  };
 
   const handleChange = (e) => {
     e.persist();
@@ -129,14 +102,13 @@ const JobDetails = ({}) => {
    * @param event
    */
   const selectJobCategory = (event) => {
-    const jobTypesArray = jobTypes.filter(category => category.id === event.target.value)[0];
-    setForm(currentForm => Object.assign({}, currentForm, { job_types: jobTypesArray.types }));
+    const jobTypesArray = jobDetails.all_job_types.filter(category => category.id === event.target.value)[0];
+    setForm(currentForm => Object.assign({}, currentForm, { selected_job_type: jobTypesArray.types }));
     selectOption(event);
   };
 
-
   return (<div className="p-l-24 p-r-24 p-t-24 p-b-24">
-    <JobDetailsHeader/>
+    <JobDetailsHeader editFlag={editFlag} setEditFlag={setEditFlag} jobDetails={jobDetails} form={form} setForm={setForm}/>
     <Divider variant="middle"/>
     <div>
       <form action="">
@@ -145,6 +117,8 @@ const JobDetails = ({}) => {
             <TextField
               label="Job Title"
               name="job_title"
+              disabled={editFlag}
+              value={form.job_title}
               onChange={handleChange}
               fullWidth
               margin="normal"
@@ -156,7 +130,9 @@ const JobDetails = ({}) => {
               label="Description"
               rows="4"
               multiline
-              name="description"
+              disabled={editFlag}
+              value={form.job_description}
+              name="job_description"
               onChange={handleChange}
               fullWidth
               margin="normal"
@@ -165,29 +141,51 @@ const JobDetails = ({}) => {
           </Grid>
           <Grid item xs={12} md={12}>
             <Grid container>
-              <Grid item xs={12} md={4}>
-                <CustomSelect name="job_category" selected={jobCategories[0]} options={jobCategories}
-                              selectAction={selectJobCategory}/>
+              <Grid item xs={12} sm={4} md={4}>
+                <CustomSelect label="Job Category"
+                              editFlag={editFlag}
+                              name="job_category"
+                              selected={jobDetails.all_job_category[0]}
+                              options={jobDetails.all_job_category}
+                              selectAction={selectJobCategory}
+                />
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid className="center-align" item xs={12} sm={4} md={4}>
                 {
-                  form.job_types &&
-                  <CustomSelect name="job_status" selected={form.job_types[0]} options={form.job_types}
+                  form.selected_job_type &&
+                  <CustomSelect label="Job Type" name="job_type" selected={form.selected_job_type[0]} options={form.selected_job_type}
                                 selectAction={selectOption}/>
                 }
               </Grid>
-              <Grid item xs={12} md={4}>
-                <div onClick={() => console.log('Formvalues ', form)}>CLick</div>
+              <Grid className="right-align" item xs={12} sm={4} md={4}>
+                <CustomSelect label="Job Priority" name="job_priority" selected={jobDetails.all_job_priority[0]} options={jobDetails.all_job_priority}
+                              selectAction={selectOption}/>
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} md={12}></Grid>
+          <Grid item xs={12} md={12}>
+            <Grid container>
+              <Grid item xs={12} sm={8} md={8}>
+                <CustomSelect label="Lead Source" name="lead_source" selected={jobDetails.all_lead_source[0]} options={jobDetails.all_lead_source}
+                              selectAction={selectOption}/>
+              </Grid>
+              <Grid className="right-align" item xs={12} sm={4} md={4}>
+                <CustomSelect label="Callout Fee" name="callout_fee" selected={jobDetails.all_callout_fee[0]} options={jobDetails.all_callout_fee}
+                              selectAction={selectOption}/>
+              </Grid>
+            </Grid>
+          </Grid>
+          {
+            !editFlag && <ActionButtons onCancel={() => setEditFlag(true)} onSave={submit}/>
+          }
         </Grid>
-
-
       </form>
     </div>
   </div>);
 };
 
-export default JobDetails;
+export default connect(state => ({
+  jobDetails: state.jobDetails.data
+}), dispatch => ({
+  jobDetailsAction: bindActionCreators(JobDetailsActions, dispatch)
+}))(JobDetails);

@@ -1,16 +1,90 @@
 import {
-  EDIT_JOB_DETAILS,
+  EDIT_JOB_DETAILS, EDIT_JOB_STATUS,
   ERROR_JOB_DETAILS,
   FETCHING_JOB_DETAILS,
   GET_JOB_DETAILS
 } from '../constants/JobDetails';
+
+const jobStatus = [
+  { id: 1, value: 'New' },
+  { id: 2, value: 'Ongoing' },
+  { id: 3, value: 'Completed' },
+  { id: 4, value: 'Cancelled' },
+  { id: 5, value: 'Callback' },
+];
+
+const jobCategories = [
+  { id: 1, value: 'Plumbing' },
+  { id: 2, value: 'Electrical' },
+  { id: 3, value: 'HVAC' },
+];
+const jobTypes = [
+  {
+    id: 1,
+    category: 'Plumbing',
+    types: [
+      { id: 1, value: 'Blocked Drain' },
+      { id: 2, value: 'Blocked Drain 1' },
+      { id: 3, value: 'Blocked Drain 2' },
+    ]
+  },
+  {
+    id: 2,
+    category: 'Electrical',
+    types: [
+      { id: 1, value: 'Electrical' },
+      { id: 2, value: 'Electrical 1' },
+      { id: 3, value: 'Electrical 2' },
+    ]
+  },
+  {
+    id: 3,
+    category: 'HVAC',
+    types: [
+      { id: 1, value: 'HVAC' },
+      { id: 2, value: 'HVAC 1' },
+      { id: 3, value: 'HVAC 2' },
+    ]
+  }
+];
+
+const jobPriorities = [
+  { id: 1, value: 'Emergency' },
+  { id: 2, value: 'Non-urgent' },
+  { id: 3, value: '1 hour Response' },
+];
+const leadSources = [
+  { id: 1, value: 'Lead Source 1' },
+  { id: 2, value: 'Lead Source 2' },
+  { id: 3, value: 'Lead Source 3' },
+];
+const calloutFees = [
+  { id: 1, value: '$10' },
+  { id: 2, value: '$20' },
+  { id: 3, value: '$30' },
+];
 
 
 const INITIAL = {
   data: {
     job_id: 1,
     job_title: 'Dummy',
+    job_description: 'THIS IS THE DESCRIPTION YO....',
+    job_category: 1,
+    job_status: 1,
+    job_type: 1,
+    job_priority: 1,
+    lead_source: 1,
+    callout_fee: 1,
+
+    all_job_category: jobCategories,
+    all_job_status: jobStatus,
+    all_job_types: jobTypes,
+    all_job_priority: jobPriorities,
+    all_lead_source: leadSources,
+    all_callout_fee: calloutFees,
   },
+
   fetching: false,
   error: ''
 };
@@ -28,6 +102,13 @@ const fetchingJob = (state) => {
   return fetchingJobs;
 };
 
+const changeJobStatus = (state, newStatus) => {
+  const currentJobDetails = Object.assign({}, state);
+  currentJobDetails.job_status = newStatus;
+  return currentJobDetails;
+};
+
+
 const errorsInJob = (obj) => {
   const fetchingJobs = Object.assign({}, obj);
   fetchingJobs.error = 'Oops, something went wrong';
@@ -39,9 +120,11 @@ export default (state = INITIAL, action) => {
     case GET_JOB_DETAILS:
       return loadJobs(state, action.payload);
     case EDIT_JOB_DETAILS:
-      return state;
+      return loadJobs(state, action.payload);
     case FETCHING_JOB_DETAILS:
       return fetchingJob(state);
+    case EDIT_JOB_STATUS:
+      return changeJobStatus(state, action.payload);
     case ERROR_JOB_DETAILS:
       return errorsInJob(state);
     default:

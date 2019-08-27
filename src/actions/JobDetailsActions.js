@@ -1,7 +1,8 @@
 import {
   EDIT_JOB_DETAILS,
   FETCHING_JOB_DETAILS,
-  GET_JOB_DETAILS
+  GET_JOB_DETAILS,
+  EDIT_JOB_STATUS,
 } from '../constants/JobDetails';
 import axios from 'axios';
 
@@ -19,25 +20,30 @@ export const fetching = () => ({
 
 // eslint-disable-next-line no-shadow
 export const fetchJobDetails = () => dispatch => {
-    axios(URL, {
-      method: 'GET',
-      headers: {
-        Authorization: AUTH,
-        'Company-User-Access': COMP
-      }
-    }).then(response => {
-      // eslint-disable-next-line no-undef
-      dispatch({
-        type: GET_JOB_DETAILS,
-        payload: response.data.data[0]
-      });
-    }).catch(error => {
-      console.log('Error', error);
+  axios(URL, {
+    method: 'GET',
+    headers: {
+      Authorization: AUTH,
+      'Company-User-Access': COMP
+    }
+  }).then(response => {
+    // eslint-disable-next-line no-undef
+    dispatch({
+      type: GET_JOB_DETAILS,
+      payload: response.data.data[0]
     });
-  }
-;
+  }).catch(error => {
+    console.log('Error', error);
+  });
+};
 
-export const editJobDetails = () => ({
+export const editJobStatus = (data) => ({
+  type: EDIT_JOB_STATUS,
+  payload: data
+});
+
+export const editJobDetails = (data) => ({
   // eslint-disable-next-line no-empty-label
-  type: EDIT_JOB_DETAILS
+  type: EDIT_JOB_DETAILS,
+  payload: data
 });

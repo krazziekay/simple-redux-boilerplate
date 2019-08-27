@@ -10,6 +10,7 @@ $accent-red: #dd6464;
 $quicksand: Quicksand;
 $roboto: Roboto;
 
+
 body {
   margin: 0;
   font-family: $quicksand;
@@ -18,7 +19,15 @@ body {
 .container {
   background-color: #fff;
   display: flex;
-  //width: 70%; //remove it later
+  width: 70%; //remove it later
+}
+
+.flex-row-container {
+  flex-direction: column;
+}
+
+.flex-col-container {
+  flex-direction: column;
 }
 
 .no-scroll-bar-div {

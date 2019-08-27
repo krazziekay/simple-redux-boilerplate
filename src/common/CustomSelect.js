@@ -13,9 +13,13 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
   },
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1, 0),
     minWidth: 150,
-    textAlign: 'center'
+    width: '90%',
+    textAlign: 'center',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -35,7 +39,7 @@ const BLANKFUNCTION = () => {
  * @returns {*}
  * @constructor
  */
-const CustomSelect = ({ name, options, selected, styles, small, selectAction = BLANKFUNCTION }) => {
+const CustomSelect = ({ label, editFlag, name, options, selected, styles, small, selectAction = BLANKFUNCTION }) => {
   // Options
   const classes = useStyles();
   const [values, setValues] = React.useState(selected);
@@ -56,9 +60,10 @@ const CustomSelect = ({ name, options, selected, styles, small, selectAction = B
     <span style={styles}>
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel htmlFor="jobStatus" ref={inputLabel}>
-          Job Status
+          {label}
         </InputLabel>
         <Select
+          editFlag={editFlag}
           className={small && 'customSelectLowHeight'}
           value={values.id}
           onChange={handleChange}
