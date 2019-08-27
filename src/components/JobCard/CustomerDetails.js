@@ -37,6 +37,11 @@ const useStyle = makeStyles(theme => ({
     border: '1px solid #ccc',
     boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)'
   },
+  headerTitle: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    verticalAlign: 'middle',
+  },
   spaceBetween: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -82,7 +87,7 @@ const ClientDiv = ({
     <div>
 
       <div>
-        <div className={classes.spaceAround}>
+        <div className={classes.headerTitle}>
           <Typography variant="h5">{title}</Typography>
           {
             editFlag && <Button className={classes.buttonStyle} onClick={() => setEditFlag(false)} color="inherit" size="medium" variant="outlined">

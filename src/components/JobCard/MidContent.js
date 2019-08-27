@@ -17,7 +17,7 @@ const MidContent = ({ drawerState, heightStyle }) => {
 
 
       { /* For Mobile Views */}
-      <Paper style={heightStyle} className="mobile">
+      <Paper className="mobile">
         <div className="mid-content">
           <ContentPerMenu currentMenu={drawerState}/>
         </div>
