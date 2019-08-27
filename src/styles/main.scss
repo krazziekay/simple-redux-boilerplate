@@ -56,6 +56,11 @@ body {
   justify-content: space-between;
 }
 
+.selected {
+  background: rgba(0, 0, 0, 0.08);
+  //margin: 0px -14px 0 -12px;
+  //padding: 0 12px;
+}
 
 /**
 Overriding Material CSS

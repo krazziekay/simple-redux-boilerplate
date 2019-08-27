@@ -53,10 +53,12 @@ const LeftSideBar = ({ drawerState, drawerStateActions, heightStyle }) => {
           <List className="p-l-12" component="nav" aria-label="main mailbox folders">
             {
               topMenuItems.map(item =>
-                <ListItem className={classes.listItem} button onClick={() => drawerStateActions.selectOption(item.id)}>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.title}/>
-                </ListItem>
+                <div className={item.id === drawerState ? 'selected' : ''}>
+                  <ListItem className={classes.listItem} button onClick={() => drawerStateActions.selectOption(item.id)}>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.title}/>
+                  </ListItem>
+                </div>
               )
             }
           </List>
