@@ -39,7 +39,6 @@ const useStyle = makeStyles(theme => ({
   },
   headerTitle: {
     display: 'flex',
-    justifyContent: 'space-between',
     verticalAlign: 'middle',
   },
   spaceBetween: {
@@ -48,6 +47,12 @@ const useStyle = makeStyles(theme => ({
     verticalAlign: 'middle',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column'
+    }
+  },
+  third: {
+    width: '30%',
+    [theme.breakpoints.down('sm')]: {
+      width: 'unset',
     }
   },
   spaceAround: {
@@ -79,8 +84,6 @@ const ClientDiv = ({
                      selectOption,
                      editFlag,
                      setEditFlag,
-                     form,
-                     setForm,
                      jobDetails
                    }) => {
   return (
@@ -98,6 +101,7 @@ const ClientDiv = ({
         <form action="">
           <div className={classes.spaceBetween}>
             <TextField
+              className={classes.third}
               label="First Name"
               name={`${module}_first_name`}
               value={client.first_name}
@@ -108,6 +112,7 @@ const ClientDiv = ({
             />
             <TextField
               label="Last Name"
+              className={classes.third}
               name={`${module}_last_name`}
               value={client.last_name}
               disabled={editFlag}
@@ -138,6 +143,7 @@ const ClientDiv = ({
           <div className={classes.spaceBetween}>
             <TextField
               label="Phone"
+              className={classes.third}
               name={`${module}_phone`}
               value={client.phone}
               disabled={editFlag}
@@ -149,6 +155,7 @@ const ClientDiv = ({
             <TextField
               label="Mobile"
               name={`${module}_mobile`}
+              className={classes.third}
               value={client.mobile}
               disabled={editFlag}
               onChange={handleChange}
@@ -159,6 +166,7 @@ const ClientDiv = ({
             <TextField
               label="Email"
               name={`${module}_email`}
+              className={classes.third}
               value={client.email}
               disabled={editFlag}
               onChange={handleChange}
@@ -222,7 +230,7 @@ const CustomerDetails = ({ jobDetails, clientActions }) => {
                  title="Client Information"
                  classes={classes}
                  jobDetails={jobDetails}
-                 submit={clientSubmit} selectOption={selectOption} editFlag={clientEditFlag} setEditFlag={setClientEditFlag} form={form} setForm={setForm}/>
+                 submit={clientSubmit} selectOption={selectOption} editFlag={clientEditFlag} setEditFlag={setClientEditFlag}/>
       <Divider/>
       <ClientDiv handleChange={handleChange}
                  module="mailing"
@@ -230,7 +238,7 @@ const CustomerDetails = ({ jobDetails, clientActions }) => {
                  title="Billing Information"
                  classes={classes}
                  jobDetails={jobDetails}
-                 submit={mailingSubmit} selectOption={selectOption} editFlag={billingEditFlag} setEditFlag={setBillingEditFlag} form={form} setForm={setForm}/>
+                 submit={mailingSubmit} selectOption={selectOption} editFlag={billingEditFlag} setEditFlag={setBillingEditFlag}/>
 
     </div>
   );

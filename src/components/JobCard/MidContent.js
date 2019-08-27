@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { ContentPerMenu } from './../../helper/helper';
