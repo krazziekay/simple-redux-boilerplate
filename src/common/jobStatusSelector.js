@@ -10,7 +10,6 @@ const JobStatusSelector = ({ jobDetails, jobDetailsAction }) => {
 
   const handleChange = (e) => {
     e.persist();
-    console.log('Save ', e.target.name, e.target.value);
     jobDetailsAction.editJobStatus(e.target.value);
   };
 

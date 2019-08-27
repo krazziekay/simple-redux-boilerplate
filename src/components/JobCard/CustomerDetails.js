@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import CreateIcon from "@material-ui/icons/Create";
-import JobStatusSelector from "../../common/jobStatusSelector";
-import { Colors } from "../../common/colors";
-import Divider from "@material-ui/core/Divider";
-import TextField from "@material-ui/core/TextField";
-import CustomSelect from "../../common/CustomSelect";
-import ActionButtons from "../../common/actionButtons";
-import { connect } from "react-redux";
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import CreateIcon from '@material-ui/icons/Create';
+import JobStatusSelector from '../../common/jobStatusSelector';
+import { Colors } from '../../common/colors';
+import Divider from '@material-ui/core/Divider';
+import TextField from '@material-ui/core/TextField';
+import CustomSelect from '../../common/CustomSelect';
+import ActionButtons from '../../common/actionButtons';
+import { connect } from 'react-redux';
 import * as ClientActions from '../../actions/ClientActions';
-import { bindActionCreators } from "redux";
-import { makeStyles } from "@material-ui/core";
-import { ObjectGeneratorForCustomSelect, GetBeforeUnderscore, GetAfterUnderscore } from '../../helper/helper';
+import { bindActionCreators } from 'redux';
+import { makeStyles } from '@material-ui/core';
+import {
+  ObjectGeneratorForCustomSelect,
+  GetBeforeUnderscore,
+  GetAfterUnderscore,
+} from '../../helper/helper';
 
 
 const useStyle = makeStyles(theme => ({
@@ -40,6 +44,7 @@ const useStyle = makeStyles(theme => ({
   headerTitle: {
     display: 'flex',
     verticalAlign: 'middle',
+    margin: '16px 0'
   },
   spaceBetween: {
     display: 'flex',
