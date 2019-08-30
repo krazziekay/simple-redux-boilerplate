@@ -71,7 +71,7 @@ const calloutFees = [
 ];
 
 
-const INITIAL = {
+const INITIAL =  {
   data: {
     job_id: 1,
     job_title: 'Dummy',
@@ -110,8 +110,12 @@ const INITIAL = {
     all_job_priority: jobPriorities,
     all_lead_source: leadSources,
     all_callout_fee: calloutFees,
+    estimates: [
+      { id: 1, data: 'Quotes #12345 - Estimate title goes here 1 - 27/08-2019 - by Nick K.' },
+      { id: 2, data: 'Quotes #12345 - Estimate title goes here 2 - 27/08-2019 - by Nick K.' },
+      { id: 3, data: 'Quotes #12345 - Estimate title goes here 3 - 27/08-2019 - by Nick K.' },
+    ],
   },
-
   fetching: false,
   error: ''
 };

@@ -44,7 +44,7 @@ const useStyle = makeStyles(theme => ({
   headerTitle: {
     display: 'flex',
     verticalAlign: 'middle',
-    margin: '16px 0'
+    margin: '16px 0',
   },
   spaceBetween: {
     display: 'flex',
@@ -96,7 +96,7 @@ const ClientDiv = ({
 
       <div>
         <div className={classes.headerTitle}>
-          <Typography variant="h5">{title}</Typography>
+          <Typography  variant="h5">{title}</Typography>
           {
             editFlag && <Button className={classes.buttonStyle} onClick={() => setEditFlag(false)} color="inherit" size="medium" variant="outlined">
               <CreateIcon className={classes.iconStyle}/>Edit

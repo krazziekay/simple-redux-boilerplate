@@ -7,11 +7,20 @@ import { connect } from 'react-redux';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import Accordion from '../../common/Accordion';
+
 
 const useStyle = makeStyles(theme => ({
+  subHeaderStyle: {
+    fontSize: 24,
+    fontWeight: 500,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 16,
+    }
+  },
   headerStyle: {
     fontFamily: 'Quicksand',
-    fontSize: 34,
+    fontSize: 32,
     verticalAlign: 'middle',
     [theme.breakpoints.down('sm')]: {
       fontSize: 18,
@@ -83,6 +92,15 @@ const EstimateQuotes = ({ jobDetails }) => {
     <div className="p-l-24 p-r-24 p-t-24 p-b-24">
       <JobDetailsHeader classes={classes} jobDetails={jobDetails}/>
       <Divider/>
+
+      <div>
+        <span className={classes.subHeaderStyle}>Estimates & Quotes</span>
+        {
+          jobDetails.estimates.map(data =>
+            <Accordion data={data}/>
+          )
+        }
+      </div>
     </div>
   );
 };
