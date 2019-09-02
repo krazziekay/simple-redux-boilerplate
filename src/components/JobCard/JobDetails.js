@@ -112,7 +112,7 @@ const JobDetails = ({ jobDetails, jobDetailsAction }) => {
             <TextField
               label="Job Title"
               name="job_title"
-              disabled={editFlag}
+              readOnly={editFlag}
               value={form.job_title}
               onChange={handleChange}
               fullWidth
@@ -125,7 +125,7 @@ const JobDetails = ({ jobDetails, jobDetailsAction }) => {
               label="Description"
               rows="4"
               multiline
-              disabled={editFlag}
+              readOnly={editFlag}
               value={form.job_description}
               name="job_description"
               onChange={handleChange}

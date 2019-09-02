@@ -66,6 +66,13 @@ body {
 /**
 Overriding Material CSS
  */
+.MuiInputBase-root.Mui-disabled {
+  color: inherit !important;
+}
+
+.MuiInputBase-root {
+  background: #F7F9FA !important;
+}
 
 .MuiTypography-h1,
 .MuiTypography-h2,
@@ -78,8 +85,9 @@ Overriding Material CSS
 
 .MuiExpansionPanelSummary-expandIcon.Mui-expanded {
   transform: rotate(90deg) !important;
+
   .MuiSvgIcon-root {
-    margin-right: 0!important;
+    margin-right: 0 !important;
   }
 }
 

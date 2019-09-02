@@ -96,7 +96,7 @@ const ClientDiv = ({
 
       <div>
         <div className={classes.headerTitle}>
-          <Typography  variant="h5">{title}</Typography>
+          <Typography variant="h5">{title}</Typography>
           {
             editFlag && <Button className={classes.buttonStyle} onClick={() => setEditFlag(false)} color="inherit" size="medium" variant="outlined">
               <CreateIcon className={classes.iconStyle}/>Edit

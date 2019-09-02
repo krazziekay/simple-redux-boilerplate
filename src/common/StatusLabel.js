@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
 
   },
   status: {
-    display: 'table-cell',
+    display: 'flex',
     borderRadius: 4,
     color: '#3E4345',
     fontFamily: 'Roboto',
