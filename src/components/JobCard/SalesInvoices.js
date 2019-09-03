@@ -8,7 +8,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Accordion from '../../common/Accordion';
-import InvoiceActionFooter from "../../common/InvoiceActionFooter";
+import InvoiceActionFooter from '../../common/InvoiceActionFooter';
 
 
 const useStyle = makeStyles(theme => ({

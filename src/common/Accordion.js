@@ -11,11 +11,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import StatusLabel from './StatusLabel';
-import AddIcon from '@material-ui/icons/Add';
-import PrintIcon from '@material-ui/icons/Print';
-import SendIcon from '@material-ui/icons/Send';
-import PencilIcon from '@material-ui/icons/Edit';
-import Button from '@material-ui/core/Button';
 import { Colors } from './colors';
 import Divider from '@material-ui/core/Divider';
 

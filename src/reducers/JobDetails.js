@@ -1,3 +1,4 @@
+import moment from 'moment';
 import {
   EDIT_JOB_DETAILS, EDIT_JOB_STATUS,
   ERROR_JOB_DETAILS,
@@ -77,7 +78,7 @@ const INITIAL = {
     job_title: 'Dummy',
     job_description: 'THIS IS THE DESCRIPTION YO....',
     job_category: 1,
-    job_status: 1,
+    job_status: 2,
     job_type: 1,
     job_priority: 1,
     lead_source: 1,
@@ -120,6 +121,64 @@ const INITIAL = {
       { id: 2, total: 142000, data: 'Invoice #12345 - Estimate title goes here 2 - 27/08-2019 - by Nick K.', sales: [1, 2, 3] },
       { id: 3, total: 142000, data: 'Invoice #12345 - Estimate title goes here 3 - 27/08-2019 - by Nick K.', sales: [1, 2, 3] },
     ],
+    payments: [
+      {
+        id: 1,
+        invoice_id: Math.floor(1000 + Math.random() * 9000),
+        date: moment().format('DD/MM/YYYY'),
+        user: 'User 1',
+        payment_type: 'Cash',
+        receipt: 1245621,
+        amount: 100.75,
+        synced: true,
+        email_sent: false
+      },
+      {
+        id: 2,
+        invoice_id: Math.floor(1000 + Math.random() * 9000),
+        date: moment().format('DD/MM/YYYY'),
+        user: 'User 2',
+        payment_type: 'Cash',
+        receipt: 1245621,
+        amount: 100.75,
+        synced: true,
+        email_sent: false
+      },
+      {
+        id: 3,
+        invoice_id: Math.floor(1000 + Math.random() * 9000),
+        date: moment().format('DD/MM/YYYY'),
+        user: 'User 3',
+        payment_type: 'Cash',
+        receipt: 1245621,
+        amount: 100.75,
+        synced: true,
+        email_sent: false
+      },
+      {
+        id: 4,
+        invoice_id: Math.floor(1000 + Math.random() * 9000),
+        date: moment().format('DD/MM/YYYY'),
+        user: 'User 4',
+        payment_type: 'Cash',
+        receipt: 1245621,
+        amount: 100.75,
+        synced: true,
+        email_sent: false
+      },
+      {
+        id: 5,
+        invoice_id: Math.floor(1000 + Math.random() * 9000),
+        date: moment().format('DD/MM/YYYY'),
+        user: 'User 5',
+        payment_type: 'Cash',
+        receipt: 1245621,
+        amount: 100.75,
+        synced: true,
+        email_sent: false
+      },
+    ],
+    credit_notes: [],
   },
   fetching: false,
   error: ''
