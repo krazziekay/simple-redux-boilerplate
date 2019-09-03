@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import { Colors } from '../../common/colors';
 import Typography from '@material-ui/core/Typography';
 import JobStatusSelector from '../../common/jobStatusSelector';
 import { connect } from 'react-redux';
 import AddIcon from '@material-ui/icons/Add';
+import MenuIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Table from '@material-ui/core/Table';
@@ -13,8 +14,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import StatusLabel from '../../common/StatusLabel';
-import { CSSHelperClasses } from './../../helper/helper';
-
+import ListOption from "../../common/ListMenuOptions";
 
 const useStyle = makeStyles(theme => ({
   subHeaderStyle: {
@@ -79,9 +79,9 @@ const useStyle = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column'
     }
-  },
-  CSSHelperClasses
+  }
 }));
+
 
 const JobDetailsHeader = ({ classes, jobDetails }) => {
 
@@ -101,7 +101,6 @@ const JobDetailsHeader = ({ classes, jobDetails }) => {
 };
 
 const Payments = ({ jobDetails }) => {
-
   const classes = useStyle();
   return (
     <div className="p-l-24 p-r-24 p-t-24 p-b-24">
@@ -120,7 +119,7 @@ const Payments = ({ jobDetails }) => {
               <TableCell>Receipt</TableCell>
               <TableCell>Amount</TableCell>
               <TableCell>Tags</TableCell>
-              <TableCell>Tags</TableCell>
+              <TableCell/>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -137,7 +136,9 @@ const Payments = ({ jobDetails }) => {
                     <StatusLabel status={payment.synced} text={payment.synced ? 'Synced' : 'Not Synced'}/>
                     <StatusLabel status={payment.email_sent} text={payment.email_sent ? 'Sent' : 'Not sent'}/>
                   </TableCell>
-                  <TableCell>Option</TableCell>
+                  <TableCell align="right">
+                    <ListOption id={payment.id}/>
+                  </TableCell>
                 </TableRow>
               )
             }
