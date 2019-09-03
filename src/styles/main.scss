@@ -74,6 +74,14 @@ Overriding Material CSS
   background: #F7F9FA !important;
 }
 
+.MuiTableCell-root {
+  font-size: 14px !important;
+}
+
+.MuiButton-root {
+  text-transform: capitalize !important;
+}
+
 .MuiTypography-h1,
 .MuiTypography-h2,
 .MuiTypography-h3,

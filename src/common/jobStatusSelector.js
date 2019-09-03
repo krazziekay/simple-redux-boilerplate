@@ -15,10 +15,11 @@ const JobStatusSelector = ({ jobDetails, jobDetailsAction }) => {
 
   return (<div>
     <CustomSelect label="Job Status"
-      name="job_status"
-      selected={ObjectGeneratorForCustomSelect(jobDetails.job_status)}
-      small options={jobDetails.all_job_status}
-      selectAction={handleChange}
+                  name="job_status"
+                  styles={{ backgroundColor: '#fff' }}
+                  selected={ObjectGeneratorForCustomSelect(jobDetails.job_status)}
+                  small options={jobDetails.all_job_status}
+                  selectAction={handleChange}
     />
   </div>);
 };

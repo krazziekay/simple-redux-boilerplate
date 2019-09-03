@@ -8,6 +8,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Accordion from '../../common/Accordion';
+import EstimateActionFooter from "../../common/EstimateActionFooter";
 
 
 const useStyle = makeStyles(theme => ({
@@ -68,6 +69,8 @@ const useStyle = makeStyles(theme => ({
 
 }));
 
+const passActionFooter = (data) => <EstimateActionFooter data={data}/>;
+
 const JobDetailsHeader = ({ classes, jobDetails }) => {
 
   return (<div className="job-details-header-container">
@@ -97,7 +100,7 @@ const EstimateQuotes = ({ jobDetails }) => {
         <span className={classes.subHeaderStyle}>Estimates & Quotes</span>
         {
           jobDetails.estimates.map(data =>
-            <Accordion data={data}/>
+            <Accordion data={data} actionFooter={passActionFooter}/>
           )
         }
       </div>
