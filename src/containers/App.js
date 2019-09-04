@@ -40,16 +40,16 @@ const App = () => {
   const classes = useStyle();
   const [toggleStatus, setToggleStatus] = useState(false);
   const [leftSide, setLeftSide] = useState('sz-20');
-  const [midSide, setMidSide] = useState('sz-65');
-  const [rightSide, setRightSide] = useState('sz-15');
+  const [midSide, setMidSide] = useState('sz-60');
+  const [rightSide, setRightSide] = useState('sz-20');
 
-  const toggleSideBar = () => {
+  const toggleLeftSideBar = () => {
     if (!toggleStatus) {
       setLeftSide('sz-0');
-      setMidSide('sz-85');
+      setMidSide('sz-80');
     } else {
       setLeftSide('sz-20');
-      setMidSide('sz-65');
+      setMidSide('sz-60');
     }
     setToggleStatus(!toggleStatus);
   };
@@ -64,8 +64,8 @@ const App = () => {
           <div className="desktop">
             <Button className={classes.sideBarToggler}>
               {
-                toggleStatus ? <ArrowForwardIcon onClick={toggleSideBar}/>
-                  : <ArrowBackIcon onClick={toggleSideBar}/>
+                toggleStatus ? <ArrowForwardIcon onClick={toggleLeftSideBar}/>
+                  : <ArrowBackIcon onClick={toggleLeftSideBar}/>
               }
             </Button>
           </div>
