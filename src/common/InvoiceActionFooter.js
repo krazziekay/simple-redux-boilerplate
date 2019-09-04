@@ -23,7 +23,10 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 50,
     border: '1px solid #ccc',
     backgroundColor: '#fff',
-    boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)'
+    boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)',
+    [theme.breakpoints.down('md')]: {
+      margin: '12px 8px 0 0'
+    }
   },
   iconStyle: {
     color: Colors.primary,
@@ -34,7 +37,13 @@ const useStyles = makeStyles(theme => ({
     marginTop: 12,
     textAlign: 'right',
     [theme.breakpoints.down('sm')]: {
+      marginTop: 0,
+    },
+    [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'column',
     }
   },
   successButtonStyle: {

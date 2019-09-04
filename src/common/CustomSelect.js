@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: '16px 0px 8px',
     minWidth: 150,
-    width: '90%',
+    width: '100%',
     textAlign: 'center',
     [theme.breakpoints.down('sm')]: {
       width: '100%',

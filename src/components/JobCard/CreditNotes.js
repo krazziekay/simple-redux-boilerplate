@@ -102,8 +102,8 @@ const JobDetailsHeader = ({ classes, jobDetails }) => {
 const CreditNotes = ({ jobDetails }) => {
   const classes = useStyle();
   return (
-    <div className="p-l-24 p-r-24 p-t-24 p-b-24">
-      <JobDetailsHeader classes={classes} jobDetails={jobDetails}/>
+    <div className="p-l-24 p-r-24 p-t-12 p-b-12">
+    <JobDetailsHeader classes={classes} jobDetails={jobDetails}/>
       <Divider/>
 
       <div>

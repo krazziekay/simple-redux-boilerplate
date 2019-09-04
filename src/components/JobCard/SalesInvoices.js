@@ -49,7 +49,7 @@ const useStyle = makeStyles(theme => ({
     justifyContent: 'space-between',
     verticalAlign: 'middle',
     alignItems: 'center',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       flexDirection: 'column'
     }
   },

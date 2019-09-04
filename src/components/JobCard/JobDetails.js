@@ -102,7 +102,7 @@ const JobDetails = ({ jobDetails, jobDetailsAction }) => {
     selectOption(event);
   };
 
-  return (<div className="p-l-24 p-r-24 p-t-24 p-b-24">
+  return (<div className="p-l-24 p-r-24 p-t-12 p-b-12">
     <JobDetailsHeader classes={classes} editFlag={editFlag} setEditFlag={setEditFlag} jobDetails={jobDetails} form={form} setForm={setForm}/>
     <Divider variant="middle"/>
     <div>

@@ -3,7 +3,7 @@ import {
 } from '../constants/DrawerState';
 
 
-const INITIAL = 5;
+const INITIAL = 7;
 
 
 export default (state = INITIAL, action) => {

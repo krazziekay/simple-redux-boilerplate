@@ -49,7 +49,7 @@ const useStyle = makeStyles(theme => ({
     justifyContent: 'space-between',
     verticalAlign: 'middle',
     alignItems: 'center',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       flexDirection: 'column'
     }
   },
@@ -92,7 +92,7 @@ const JobDetailsHeader = ({ classes, jobDetails }) => {
 const EstimateQuotes = ({ jobDetails }) => {
   const classes = useStyle();
   return (
-    <div className="p-l-24 p-r-24 p-t-24 p-b-24">
+    <div className="p-l-24 p-r-24 p-t-12 p-b-12">
       <JobDetailsHeader classes={classes} jobDetails={jobDetails}/>
       <Divider/>
 

@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import JobStatusSelector from '../../common/jobStatusSelector';
 import { connect } from 'react-redux';
 import AddIcon from '@material-ui/icons/Add';
-import MenuIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Table from '@material-ui/core/Table';
@@ -82,7 +81,6 @@ const useStyle = makeStyles(theme => ({
   }
 }));
 
-
 const JobDetailsHeader = ({ classes, jobDetails }) => {
 
   return (<div className="job-details-header-container">
@@ -103,7 +101,7 @@ const JobDetailsHeader = ({ classes, jobDetails }) => {
 const Payments = ({ jobDetails }) => {
   const classes = useStyle();
   return (
-    <div className="p-l-24 p-r-24 p-t-24 p-b-24">
+    <div className="p-l-24 p-r-24 p-t-12 p-b-12">
       <JobDetailsHeader classes={classes} jobDetails={jobDetails}/>
       <Divider/>
 

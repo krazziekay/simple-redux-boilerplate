@@ -125,13 +125,15 @@ const ClientDiv = ({
               margin="normal"
               variant="outlined"
             />
-            <CustomSelect
-              label="Type"
-              name="client_type"
-              options={jobDetails.all_client_types}
-              selected={ObjectGeneratorForCustomSelect(client.client_type)}
-              selectAction={selectOption}
-            />
+            <div className={classes.third}>
+              <CustomSelect
+                label="Type"
+                name="client_type"
+                options={jobDetails.all_client_types}
+                selected={ObjectGeneratorForCustomSelect(client.client_type)}
+                selectAction={selectOption}
+              />
+            </div>
           </div>
           <div>
             <TextField
@@ -226,7 +228,7 @@ const CustomerDetails = ({ jobDetails, clientActions }) => {
   };
 
   return (
-    <div className="p-l-24 p-r-24 p-t-24 p-b-24">
+    <div className="p-l-24 p-r-24 p-t-12 p-b-12">
       <JobDetailsHeader classes={classes} jobDetails={jobDetails}/>
       <Divider variant="middle"/>
       <ClientDiv handleChange={handleChange}

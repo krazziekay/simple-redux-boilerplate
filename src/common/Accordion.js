@@ -53,9 +53,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
-    }
   },
   buttonStyle: {
     marginRight: 12,
@@ -96,7 +93,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   mobileEstimateList: {
-    padding: 12
+    padding: '4px 12px'
   }
 }));
 
@@ -119,11 +116,13 @@ export default ({ data, actionFooter }) => {
           >
             <div className={classes.accordionWrapper}>
               <Typography className={` ${expanded === data.id && classes.expandedHeading} ${classes.heading} ${classes.quickFont}`}>{data.data}</Typography>
-              <div className={classes.labelsWrapper}>
-                <StatusLabel status={false} text="Not sent"/>
-                <StatusLabel status text="Sent"/>
-                <Typography className={`${expanded === data.id && classes.expandedHeading} ${classes.totalWrapper} ${classes.quickFont}`}>Total: ${data.total.toLocaleString()}</Typography>
-              </div>
+              <span className="desktop">
+                <div className={`${classes.labelsWrapper}`}>
+                  <StatusLabel status={false} text="Not sent"/>
+                  <StatusLabel status text="Sent"/>
+                  <Typography className={`${expanded === data.id && classes.expandedHeading} ${classes.totalWrapper} ${classes.quickFont}`}>Total: ${data.total.toLocaleString()}</Typography>
+                </div>
+              </span>
             </div>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className={classes.accordionTableWrapper}>
@@ -161,11 +160,11 @@ export default ({ data, actionFooter }) => {
             <div className={`${classes.mobileEstimateList} mobile`}>
               {data.sales.map((row, i) => (
                 <div>
-                  <p>
+                  <div>
                     Services Title Goes Here - <span className={i > 1 ? classes.positive : classes.negative}>$0.75</span>
-                  </p>
-                  <p className={classes.gray}>Description of service goes here</p>
-                  <Divider/>
+                  </div>
+                  <div className={classes.gray}>Description of service goes here</div>
+                  <hr/>
                 </div>
               ))}
             </div>
