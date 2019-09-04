@@ -79,14 +79,8 @@ export const themeStyler = (theme, addedThemes) => {
     },
 
     // Width styles
-    third: {
-      width: '30%',
-      [theme.breakpoints.down('sm')]: {
-        width: 'unset',
-      }
-    },
-    sixth: {
-      width: '65%',
+    gridWrapper: {
+      transition: '0.5s',
       [theme.breakpoints.down('sm')]: {
         width: 'unset',
       }

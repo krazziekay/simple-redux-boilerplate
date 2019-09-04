@@ -47,7 +47,7 @@ const ClientDiv = ({
         <form action="">
           <div className={classes.spaceBetween}>
             <TextField
-              className={classes.third}
+              className={`${classes.gridWrapper} sz-30`}
               label="First Name"
               name={`${module}_first_name`}
               value={client.first_name}
@@ -58,7 +58,7 @@ const ClientDiv = ({
             />
             <TextField
               label="Last Name"
-              className={classes.third}
+              className={`${classes.gridWrapper} sz-30`}
               name={`${module}_last_name`}
               value={client.last_name}
               disabled={editFlag}
@@ -66,7 +66,7 @@ const ClientDiv = ({
               margin="normal"
               variant="outlined"
             />
-            <div className={classes.third}>
+            <div className={`${classes.gridWrapper} sz-30`}>
               <CustomSelect
                 label="Type"
                 name="client_type"
@@ -91,7 +91,7 @@ const ClientDiv = ({
           <div className={classes.spaceBetween}>
             <TextField
               label="Phone"
-              className={classes.third}
+              className={`${classes.gridWrapper} sz-30`}
               name={`${module}_phone`}
               value={client.phone}
               disabled={editFlag}
@@ -103,7 +103,7 @@ const ClientDiv = ({
             <TextField
               label="Mobile"
               name={`${module}_mobile`}
-              className={classes.third}
+              className={`${classes.gridWrapper} sz-30`}
               value={client.mobile}
               disabled={editFlag}
               onChange={handleChange}
@@ -114,7 +114,7 @@ const ClientDiv = ({
             <TextField
               label="Email"
               name={`${module}_email`}
-              className={classes.third}
+              className={`${classes.gridWrapper} sz-30`}
               value={client.email}
               disabled={editFlag}
               onChange={handleChange}

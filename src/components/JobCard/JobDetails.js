@@ -88,7 +88,7 @@ const JobDetails = ({ jobDetails, jobDetailsAction }) => {
           variant="outlined"
         />
         <div className={classes.spaceBetween}>
-          <div className={classes.third}>
+          <div className={`${classes.gridWrapper} sz-30`}>
             <CustomSelect label="Job Category"
                           editFlag={editFlag}
                           name="job_category"
@@ -97,24 +97,24 @@ const JobDetails = ({ jobDetails, jobDetailsAction }) => {
                           selectAction={selectJobCategory}
             />
           </div>
-          <div className={classes.third}>
+          <div className={`${classes.gridWrapper} sz-30`}>
             {
               form.selected_job_type &&
               <CustomSelect label="Job Type" name="job_type" selected={form.selected_job_type[0]} options={form.selected_job_type}
                             selectAction={selectOption}/>
             }
           </div>
-          <div className={classes.third}>
+          <div className={`${classes.gridWrapper} sz-30`}>
             <CustomSelect label="Job Priority" name="job_priority" selected={jobDetails.all_job_priority[0]} options={jobDetails.all_job_priority}
                           selectAction={selectOption}/>
           </div>
         </div>
         <div className={classes.spaceBetween}>
-          <div className={classes.sixth}>
+          <div className={`${classes.gridWrapper} sz-65`}>
             <CustomSelect label="Lead Source" name="lead_source" selected={jobDetails.all_lead_source[0]} options={jobDetails.all_lead_source}
                           selectAction={selectOption}/>
           </div>
-          <div className={classes.third}>
+          <div className={`${classes.gridWrapper} sz-30`}>
             <CustomSelect label="Callout Fee" name="callout_fee" selected={jobDetails.all_callout_fee[0]} options={jobDetails.all_callout_fee}
                           selectAction={selectOption}/>
           </div>

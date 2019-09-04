@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { topMenuItems, bottomMenuItems } from '../../common/leftSideMenu';
+import { topMenuItems, bottomMenuItems } from '../common/leftSideMenu';
 import Divider from '@material-ui/core/Divider';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Typography from '@material-ui/core/Typography';
@@ -14,9 +14,10 @@ import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import * as DrawerStateActions from '../../actions/DrawerStateAction';
+import * as DrawerStateActions from '../actions/DrawerStateAction';
+import { themeStyler } from '../helper/helper';
 
-const useStyles = makeStyles(theme => ({
+const useStyle = makeStyles(theme => themeStyler(theme, {
   bottom: {
     fontWeight: 'bold'
   },
@@ -41,9 +42,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
 const LeftSideBar = ({ drawerState, drawerStateActions, heightStyle }) => {
-  const classes = useStyles();
+  const classes = useStyle();
 
   return (
     <div>

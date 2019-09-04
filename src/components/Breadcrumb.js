@@ -7,8 +7,9 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Typography from '@material-ui/core/Typography';
 import HomeIcon from '@material-ui/icons/Home';
 import FindInPageIcon from '@material-ui/icons/FindInPage';
+import { themeStyler } from '../helper/helper';
 
-const useStyles = makeStyles(theme => ({
+const useStyle = makeStyles(theme => themeStyler(theme, {
   root: {
     padding: theme.spacing(2, 4),
     backgroundColor: '#F7F9FA',
@@ -28,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 const Breadcrumb = () => {
   useEffect(() => {
   }, []);
-  const classes = useStyles();
+  const classes = useStyle();
 
   return (
     <Paper elevation={0} className={classes.root}>

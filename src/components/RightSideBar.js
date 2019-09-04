@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import QuickActions from './QuickActions';
-import { Colors } from '../../common/colors';
-import CardInfo from '../../common/cardInfo';
-import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-
+import QuickActions from './JobCard/QuickActions';
+import { Colors } from '../common/colors';
+import CardInfo from '../common/cardInfo';
+import Divider from '@material-ui/core/Divider/index';
+import Typography from '@material-ui/core/Typography/index';
+import Paper from '@material-ui/core/Paper/index'
 
 const styles = {
   rightSideBar: {

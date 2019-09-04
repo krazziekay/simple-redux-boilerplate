@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Paper from '@material-ui/core/Paper';
-import { ContentPerMenu } from './../../helper/helper';
+import Paper from '@material-ui/core/Paper/index';
+import { ContentPerMenu } from '../helper/helper';
 
 const MidContent = ({ drawerState, heightStyle }) => {
 

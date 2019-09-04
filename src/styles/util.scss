@@ -30,6 +30,10 @@ $disabled: #5e6366;
   .m-t-#{$i} {
     margin-top: #{$i}px !important;
   }
+
+  .sz-#{$i} {
+    width: percentage($i/100);
+  }
 }
 
 .center-align {
