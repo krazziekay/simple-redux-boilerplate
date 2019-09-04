@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import CreateIcon from '@material-ui/icons/Create';
-import JobStatusSelector from '../../common/jobStatusSelector';
-import { Colors } from '../../common/colors';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import CustomSelect from '../../common/CustomSelect';
@@ -15,69 +12,12 @@ import { makeStyles } from '@material-ui/core';
 import {
   ObjectGeneratorForCustomSelect,
   GetBeforeUnderscore,
-  GetAfterUnderscore,
+  GetAfterUnderscore, themeStyler,
 } from '../../helper/helper';
+import JobDetailsHeader from '../../common/JobDetailsHeader';
 
+const useStyle = makeStyles(theme => themeStyler(theme));
 
-const useStyle = makeStyles(theme => ({
-  headerStyle: {
-    fontFamily: 'Quicksand',
-    fontSize: 34,
-    verticalAlign: 'middle',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: 18,
-      fontWeight: 'bold',
-
-    }
-  },
-  iconStyle: {
-    color: Colors.success,
-    fontSize: 18,
-    marginRight: 8
-  },
-  buttonStyle: {
-    marginLeft: 12,
-    borderRadius: 50,
-    border: '1px solid #ccc',
-    boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)'
-  },
-  headerTitle: {
-    display: 'flex',
-    verticalAlign: 'middle',
-    margin: '16px 0',
-  },
-  spaceBetween: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    verticalAlign: 'middle',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column'
-    }
-  },
-  third: {
-    width: '30%',
-    [theme.breakpoints.down('sm')]: {
-      width: 'unset',
-    }
-  },
-  spaceAround: {
-    display: 'flex',
-    verticalAlign: 'middle',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column'
-    }
-  }
-}));
-
-const JobDetailsHeader = ({ classes, jobDetails }) => {
-
-  return (<div className="job-details-header-container">
-    <div>
-      <Typography variant="span" className={classes.headerStyle}>Job #{jobDetails.job_id}</Typography>
-    </div>
-    <JobStatusSelector/>
-  </div>);
-};
 
 const ClientDiv = ({
                      title,
@@ -96,7 +36,8 @@ const ClientDiv = ({
 
       <div>
         <div className={classes.headerTitle}>
-          <Typography variant="h5">{title}</Typography>
+          <span className={classes.subHeaderStyle}>{title}</span>
+
           {
             editFlag && <Button className={classes.buttonStyle} onClick={() => setEditFlag(false)} color="inherit" size="medium" variant="outlined">
               <CreateIcon className={classes.iconStyle}/>Edit
@@ -229,8 +170,8 @@ const CustomerDetails = ({ jobDetails, clientActions }) => {
 
   return (
     <div className="p-l-24 p-r-24 p-t-12 p-b-12">
-      <JobDetailsHeader classes={classes} jobDetails={jobDetails}/>
-      <Divider variant="middle"/>
+      <JobDetailsHeader classes={classes}/>
+
       <ClientDiv handleChange={handleChange}
                  module="client"
                  client={jobDetails.client}

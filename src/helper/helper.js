@@ -1,4 +1,5 @@
 import { topMenuItems } from '../common/leftSideMenu';
+import { Colors } from '../common/colors';
 
 
 export const ContentPerMenu = ({ currentMenu }) => {
@@ -10,3 +11,105 @@ export const ObjectGeneratorForCustomSelect = (id, value = '') => ({ id, value }
 export const GetAfterUnderscore = str => str.substr(str.indexOf('_') + 1, str.length);
 
 export const GetBeforeUnderscore = str => str.substr(0, str.indexOf('_'));
+
+/**
+ * CSS styling, with adefault theme
+ * @param theme
+ * @param addedThemes
+ * @returns {any}
+ */
+export const themeStyler = (theme, addedThemes) => {
+  const defaultTheme = {
+    // Header styles
+    headerStyle: {
+      fontFamily: 'Quicksand',
+      fontSize: 34,
+      verticalAlign: 'middle',
+      [theme.breakpoints.down('md')]: {
+        fontSize: 24,
+      },
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 18,
+        fontWeight: 'bold',
+      }
+    },
+    subHeaderStyle: {
+      fontSize: 24,
+      fontWeight: 500,
+      [theme.breakpoints.down('sm')]: {
+        fontSize: 16,
+      }
+    },
+    headerTitle: {
+      display: 'flex',
+      verticalAlign: 'middle',
+      margin: '16px 0',
+      alignItems: 'center',
+      [theme.breakpoints.down('md')]: {
+        margin: '14px 0',
+      },
+      [theme.breakpoints.down('sm')]: {
+        margin: '12px 0',
+      },
+      [theme.breakpoints.down('xs')]: {
+        margin: '8px 0',
+      },
+    },
+    iconStyle: {
+      color: Colors.success,
+      fontSize: 18,
+      marginRight: 8
+    },
+
+    // Flex spacing styles
+    spaceBetween: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      verticalAlign: 'middle',
+      [theme.breakpoints.down('sm')]: {
+        flexDirection: 'column'
+      }
+    },
+    spaceAround: {
+      display: 'flex',
+      verticalAlign: 'middle',
+      [theme.breakpoints.down('sm')]: {
+        flexDirection: 'column'
+      }
+    },
+
+    // Width styles
+    third: {
+      width: '30%',
+      [theme.breakpoints.down('sm')]: {
+        width: 'unset',
+      }
+    },
+    sixth: {
+      width: '65%',
+      [theme.breakpoints.down('sm')]: {
+        width: 'unset',
+      }
+    },
+
+    // Button styles
+    buttonStyle: {
+      marginLeft: 12,
+      borderRadius: 50,
+      border: '1px solid #ccc',
+      boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)'
+    },
+
+    // Color styles
+    positive: {
+      color: '#069697'
+    },
+    negative: {
+      color: '#EA3D2F'
+    },
+    gray: {
+      color: '#5e6366',
+    },
+  };
+  return Object.assign({}, defaultTheme, addedThemes);
+};
