@@ -17,7 +17,7 @@ const passActionFooter = (data) => <InvoiceActionFooter data={data}/>;
 const SalesInvoices = ({ jobDetails }) => {
   const classes = useStyle();
   return (
-    <div className="p-l-24 p-r-24 p-t-24 p-b-24">
+    <div className="p-l-24 p-r-24 p-t-12 p-b-12">
       <JobDetailsHeader classes={classes}/>
       <div>
         <div className={classes.headerTitle}>

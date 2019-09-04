@@ -5,8 +5,9 @@ import Grid from '@material-ui/core/Grid';
 import { Colors } from './colors';
 import { makeStyles } from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
+import { themeStyler } from '../helper/helper';
 
-const useStyle = makeStyles(theme => ({
+const useStyle = makeStyles(theme => themeStyler(theme, {
   actionButtons: {
     textAlign: 'right',
     padding: '18px 0'
@@ -21,12 +22,6 @@ const useStyle = makeStyles(theme => ({
     fontSize: 18,
     marginRight: 8
   },
-  buttonStyle: {
-    marginLeft: 12,
-    borderRadius: 50,
-    border: '1px solid #ccc',
-    boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)'
-  }
 }));
 
 

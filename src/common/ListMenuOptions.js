@@ -9,8 +9,10 @@ import SyncIcon from '@material-ui/icons/Sync';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ListItemText from '@material-ui/core/ListItemText';
+import { themeStyler } from '../helper/helper';
 
-const useStyle = makeStyles(theme => ({
+
+const useStyle = makeStyles(theme => themeStyler(theme, {
   listWrapperStyle: {
     position: 'relative',
   },

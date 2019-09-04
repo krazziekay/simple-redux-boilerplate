@@ -2,8 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ErrorIcon from '@material-ui/icons/Error';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { themeStyler } from '../helper/helper';
 
-const useStyles = makeStyles(theme => ({
+
+const useStyle = makeStyles(theme => themeStyler(theme, {
   root: {
     width: '100%',
     margin: '18px 0'
@@ -43,8 +45,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
 export default ({ status, text }) => {
-  const classes = useStyles();
+  const classes = useStyle();
 
   return (
     <span className={classes.wrapper}>

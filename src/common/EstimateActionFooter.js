@@ -5,9 +5,9 @@ import PrintIcon from '@material-ui/icons/Print';
 import SendIcon from '@material-ui/icons/Send';
 import PencilIcon from '@material-ui/icons/Edit';
 import { makeStyles } from '@material-ui/core';
-import { Colors } from "./colors";
+import { themeStyler } from '../helper/helper';
 
-const useStyles = makeStyles(theme => ({
+const useStyle = makeStyles(theme => themeStyler(theme, {
   labelsWrapper: {
     display: 'flex',
     flexDirection: 'row',
@@ -15,21 +15,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
     }
-  },
-  buttonStyle: {
-    marginRight: 12,
-    borderRadius: 50,
-    border: '1px solid #ccc',
-    backgroundColor: '#fff',
-    boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)',
-    [theme.breakpoints.down('md')]: {
-      margin: '12px 8px 0 0'
-    }
-  },
-  iconStyle: {
-    color: Colors.primary,
-    fontSize: 18,
-    marginRight: 8
   },
   bottomOptions: {
     marginTop: 12,
@@ -44,23 +29,11 @@ const useStyles = makeStyles(theme => ({
       flexDirection: 'column',
     }
   },
-  successButtonStyle: {
-    border: `1px solid ${Colors.success}`,
-  },
-  dangerButtonStyle: {
-    border: `1px solid ${Colors.danger}`,
-  },
-  successStyle: {
-    color: Colors.success,
-  },
-  dangerStyle: {
-    color: Colors.danger,
-  }
 }));
 
 
 const FooterActions = ({ data }) => {
-  const classes = useStyles();
+  const classes = useStyle();
   console.log('Passed props', data);
 
   return (

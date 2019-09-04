@@ -99,6 +99,18 @@ export const themeStyler = (theme, addedThemes) => {
       border: '1px solid #ccc',
       boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)'
     },
+    successButtonStyle: {
+      border: `1px solid ${Colors.success}`,
+    },
+    dangerButtonStyle: {
+      border: `1px solid ${Colors.danger}`,
+    },
+    successStyle: {
+      color: Colors.success,
+    },
+    dangerStyle: {
+      color: Colors.danger,
+    },
 
     // Color styles
     positive: {

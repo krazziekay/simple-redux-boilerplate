@@ -5,9 +5,10 @@ import Select from '@material-ui/core/Select';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import { themeStyler } from '../helper/helper';
 
 
-const useStyles = makeStyles(theme => ({
+const useStyle = makeStyles(theme => themeStyler(theme, {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -43,7 +44,7 @@ const BLANKFUNCTION = () => {
  */
 const CustomSelect = ({ label, name, options, selected, styles, small, selectAction = BLANKFUNCTION }) => {
   // Options
-  const classes = useStyles();
+  const classes = useStyle();
   const [values, setValues] = React.useState(selected);
 
   // For the label

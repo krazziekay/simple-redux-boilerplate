@@ -11,10 +11,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import StatusLabel from './StatusLabel';
-import { Colors } from './colors';
-import Divider from '@material-ui/core/Divider';
+import { themeStyler } from '../helper/helper';
 
-const useStyles = makeStyles(theme => ({
+const useStyle = makeStyles(theme => themeStyler(theme, {
   root: {
     width: '100%',
     margin: '18px 0'
@@ -54,42 +53,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
-  buttonStyle: {
-    marginRight: 12,
-    borderRadius: 50,
-    border: '1px solid #ccc',
-    backgroundColor: '#fff',
-    boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)'
-  },
-  iconStyle: {
-    color: Colors.primary,
-    fontSize: 18,
-    marginRight: 8
-  },
   accordionTableWrapper: {
     display: 'block',
     [theme.breakpoints.down('sm')]: {
       padding: '8px 0',
-    }
-  },
-  totalWrapper: {
-    margin: '0 12px',
-    textAlign: 'right'
-  },
-  positive: {
-    color: '#069697'
-  },
-  negative: {
-    color: '#EA3D2F'
-  },
-  gray: {
-    color: '#5e6366',
-  },
-  bottomOptions: {
-    marginTop: 12,
-    textAlign: 'right',
-    [theme.breakpoints.down('sm')]: {
-      textAlign: 'center',
     }
   },
   mobileEstimateList: {
@@ -98,7 +65,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default ({ data, actionFooter }) => {
-  const classes = useStyles();
+  const classes = useStyle();
   const [expanded, setExpanded] = React.useState(false);
   const handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
