@@ -121,6 +121,7 @@ export const themeStyler = (theme, addedThemes) => {
     gray: {
       color: '#5e6366',
     },
+
   };
   return Object.assign({}, defaultTheme, addedThemes);
 };

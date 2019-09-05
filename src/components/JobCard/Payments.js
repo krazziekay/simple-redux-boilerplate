@@ -19,8 +19,10 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
     justifyContent: 'space-evenly',
     verticalAlign: 'middle',
   },
+
   overflowOnlyX: {
-    overflowX: 'scroll'
+    overflowX: 'scroll',
+    overflowY: 'hidden'
   }
 }));
 

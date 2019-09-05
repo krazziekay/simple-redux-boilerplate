@@ -24,7 +24,7 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
     lineHeight: '20px',
     height: '20px',
     padding: '4px 12px 4px 4px',
-    overflow: 'hidden',
+    overflow: 'visible',
     textAlign: 'center',
   },
   okStatus: {
@@ -43,6 +43,9 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
   notOkIconStatus: {
     color: '#EA3D2F'
   },
+  noBreakText: {
+    whiteSpace: 'nowrap'
+  }
 }));
 
 
@@ -53,7 +56,7 @@ export default ({ status, text }) => {
     <span className={classes.wrapper}>
       <span className={`${classes.status} ${status ? classes.okStatus : classes.notOkStatus}`}>
         {status ? <CheckCircleIcon className={`${classes.labelIcon} ${classes.okIconStatus}`}/> : <ErrorIcon className={` ${classes.labelIcon} ${classes.notOkIconStatus}`}/>}
-        <span>{text}</span>
+        <span className={classes.noBreakText}>{text}</span>
       </span>
     </span>
 

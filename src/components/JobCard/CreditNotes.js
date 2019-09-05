@@ -13,7 +13,18 @@ import ListOption from '../../common/ListMenuOptions';
 import { themeStyler } from '../../helper/helper';
 import JobDetailsHeader from '../../common/JobDetailsHeader';
 
-const useStyle = makeStyles(theme => themeStyler(theme));
+const useStyle = makeStyles(theme => themeStyler(theme, {
+  spaceEvenlyForAllScreens: {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    verticalAlign: 'middle',
+  },
+
+  overflowOnlyX: {
+    overflowX: 'scroll',
+    overflowY: 'hidden'
+  }
+}));
 
 
 const CreditNotes = ({ jobDetails }) => {
@@ -29,36 +40,38 @@ const CreditNotes = ({ jobDetails }) => {
         </Button>
       </div>
 
-      <div>
+      <div className={classes.overflowOnlyX}>
         <Table className={`custom-table`} size="small">
           <TableHead>
             <TableRow>
               <TableCell>Invoice</TableCell>
-              <TableCell>Date</TableCell>
-              <TableCell>User</TableCell>
-              <TableCell>Payment Method</TableCell>
-              <TableCell>Receipt</TableCell>
-              <TableCell>Amount</TableCell>
-              <TableCell>Tags</TableCell>
+              <TableCell align="center">Date</TableCell>
+              <TableCell align="center">User</TableCell>
+              <TableCell align="center">Payment Method</TableCell>
+              <TableCell align="center">Receipt</TableCell>
+              <TableCell align="center">Amount</TableCell>
+              <TableCell align="center">Tags</TableCell>
               <TableCell/>
             </TableRow>
           </TableHead>
           <TableBody>
             {
-              jobDetails.payments.map(payment =>
+              jobDetails.credit_notes.map(creditNote =>
                 <TableRow>
-                  <TableCell className={classes.gray}>{payment.invoice_id}</TableCell>
-                  <TableCell>{payment.date}</TableCell>
-                  <TableCell className={classes.gray}>{payment.user}</TableCell>
-                  <TableCell>{payment.payment_type}</TableCell>
-                  <TableCell className={classes.gray}>{payment.receipt}</TableCell>
-                  <TableCell className={classes.positive}>${payment.amount}</TableCell>
+                  <TableCell className={classes.gray}>{creditNote.invoice_id}</TableCell>
+                  <TableCell align="center">{creditNote.date}</TableCell>
+                  <TableCell align="center" className={classes.gray}>{creditNote.user}</TableCell>
+                  <TableCell align="center">{creditNote.payment_type}</TableCell>
+                  <TableCell className={classes.gray} align="center">{creditNote.receipt}</TableCell>
+                  <TableCell className={classes.positive} align="center">${creditNote.amount}</TableCell>
                   <TableCell>
-                    <StatusLabel status={payment.synced} text={payment.synced ? 'Synced' : 'Not Synced'}/>
-                    <StatusLabel status={payment.email_sent} text={payment.email_sent ? 'Sent' : 'Not sent'}/>
+                    <div className={classes.spaceEvenlyForAllScreens}>
+                      <StatusLabel status={creditNote.synced} text={creditNote.synced ? 'Synced' : 'Not Synced'}/>
+                      <StatusLabel status={creditNote.email_sent} text={creditNote.email_sent ? 'Sent' : 'Not sent'}/>
+                    </div>
                   </TableCell>
                   <TableCell align="right">
-                    <ListOption id={payment.id}/>
+                    <ListOption id={creditNote.id}/>
                   </TableCell>
                 </TableRow>
               )
