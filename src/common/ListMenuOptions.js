@@ -15,12 +15,12 @@ import MenuIcon from '@material-ui/icons/MoreVert';
 
 const useStyle = makeStyles(theme => themeStyler(theme, {
   listWrapperStyle: {
-    position: 'relative',
+    // position: 'relative',
   },
   listStyle: {
     position: 'absolute',
-    top: 0,
-    right: 0,
+    // top: 0,
+    right: 24,
     backgroundColor: '#F7F9FA',
     border: '1px solid #ccc',
     borderRadius: 10,

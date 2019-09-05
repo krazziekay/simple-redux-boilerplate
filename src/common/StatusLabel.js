@@ -53,7 +53,7 @@ export default ({ status, text }) => {
     <span className={classes.wrapper}>
       <span className={`${classes.status} ${status ? classes.okStatus : classes.notOkStatus}`}>
         {status ? <CheckCircleIcon className={`${classes.labelIcon} ${classes.okIconStatus}`}/> : <ErrorIcon className={` ${classes.labelIcon} ${classes.notOkIconStatus}`}/>}
-        {text}
+        <span>{text}</span>
       </span>
     </span>
 

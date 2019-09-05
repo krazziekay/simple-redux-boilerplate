@@ -18,6 +18,9 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
     display: 'flex',
     justifyContent: 'space-evenly',
     verticalAlign: 'middle',
+  },
+  overflowOnlyX: {
+    overflowX: 'scroll'
   }
 }));
 
@@ -36,7 +39,7 @@ const Payments = ({ jobDetails }) => {
           </Button>
         </div>
 
-        <div className="no-vertical-scroll-bar ">
+        <div className={classes.overflowOnlyX}>
           <Table className={`custom-table`} size="small">
             <TableHead>
               <TableRow>
