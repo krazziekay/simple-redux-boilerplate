@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
-import MenuIcon from '@material-ui/icons/MoreVert';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import { makeStyles } from '@material-ui/core';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,6 +10,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ListItemText from '@material-ui/core/ListItemText';
 import { themeStyler } from '../helper/helper';
+import MenuIcon from '@material-ui/icons/MoreVert';
 
 
 const useStyle = makeStyles(theme => themeStyler(theme, {
@@ -38,39 +39,50 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
 }));
 
 const ListOption = ({ id }) => {
-  const [status, setStatus] = useState(false);
+  const [open, setOpen] = React.useState(false);
   const classes = useStyle();
+
+  const handleClick = () => {
+    setOpen(prev => !prev);
+  };
+
+  const handleClickAway = () => {
+    setOpen(false);
+  };
 
   return (
     <div>
-      <Button onClick={() => setStatus(!status)}>
-        <MenuIcon/>
-      </Button>
-      {
-        status &&
-        <div className={classes.listWrapperStyle}>
-          <List className={classes.listStyle}>
-            <ListItem button>
-              <ListItemIcon>
-                <SyncIcon className={classes.bottomMenuListIcons}/>
-              </ListItemIcon>
-              <ListItemText className={classes.bottomMenuList} primary="Sync"/>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <EditIcon className={classes.bottomMenuListIcons}/>
-              </ListItemIcon>
-              <ListItemText className={classes.bottomMenuList} primary="Edit"/>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <DeleteIcon className={classes.bottomMenuListIcons}/>
-              </ListItemIcon>
-              <ListItemText className={classes.bottomMenuList} primary="Delete"/>
-            </ListItem>
-          </List>
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <div>
+          <Button onClick={handleClick}>
+            <MenuIcon/>
+          </Button>
+          {open ? (
+            <div className={classes.listWrapperStyle}>
+              <List className={classes.listStyle}>
+                <ListItem button>
+                  <ListItemIcon>
+                    <SyncIcon className={classes.bottomMenuListIcons}/>
+                  </ListItemIcon>
+                  <ListItemText className={classes.bottomMenuList} primary="Sync"/>
+                </ListItem>
+                <ListItem button>
+                  <ListItemIcon>
+                    <EditIcon className={classes.bottomMenuListIcons}/>
+                  </ListItemIcon>
+                  <ListItemText className={classes.bottomMenuList} primary="Edit"/>
+                </ListItem>
+                <ListItem button>
+                  <ListItemIcon>
+                    <DeleteIcon className={classes.bottomMenuListIcons}/>
+                  </ListItemIcon>
+                  <ListItemText className={classes.bottomMenuList} primary="Delete"/>
+                </ListItem>
+              </List>
+            </div>
+          ) : null}
         </div>
-      }
+      </ClickAwayListener>
     </div>
   );
 };

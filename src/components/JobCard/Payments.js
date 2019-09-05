@@ -13,7 +13,13 @@ import ListOption from '../../common/ListMenuOptions';
 import { themeStyler } from '../../helper/helper';
 import JobDetailsHeader from '../../common/JobDetailsHeader';
 
-const useStyle = makeStyles(theme => themeStyler(theme));
+const useStyle = makeStyles(theme => themeStyler(theme, {
+  spaceEvenlyForAllScreens: {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    verticalAlign: 'middle',
+  }
+}));
 
 
 const Payments = ({ jobDetails }) => {
@@ -30,41 +36,45 @@ const Payments = ({ jobDetails }) => {
           </Button>
         </div>
 
-        <Table className={`custom-table`} size="small">
-          <TableHead>
-            <TableRow>
-              <TableCell>Invoice</TableCell>
-              <TableCell>Date</TableCell>
-              <TableCell>User</TableCell>
-              <TableCell>Payment Method</TableCell>
-              <TableCell>Receipt</TableCell>
-              <TableCell>Amount</TableCell>
-              <TableCell>Tags</TableCell>
-              <TableCell/>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {
-              jobDetails.payments.map(payment =>
-                <TableRow>
-                  <TableCell className={classes.gray}>{payment.invoice_id}</TableCell>
-                  <TableCell>{payment.date}</TableCell>
-                  <TableCell className={classes.gray}>{payment.user}</TableCell>
-                  <TableCell>{payment.payment_type}</TableCell>
-                  <TableCell className={classes.gray}>{payment.receipt}</TableCell>
-                  <TableCell className={classes.positive}>${payment.amount}</TableCell>
-                  <TableCell>
-                    <StatusLabel status={payment.synced} text={payment.synced ? 'Synced' : 'Not Synced'}/>
-                    <StatusLabel status={payment.email_sent} text={payment.email_sent ? 'Sent' : 'Not sent'}/>
-                  </TableCell>
-                  <TableCell align="right">
-                    <ListOption id={payment.id}/>
-                  </TableCell>
-                </TableRow>
-              )
-            }
-          </TableBody>
-        </Table>
+        <div className="no-vertical-scroll-bar ">
+          <Table className={`custom-table`} size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell>Invoice</TableCell>
+                <TableCell align="center">Date</TableCell>
+                <TableCell align="center">User</TableCell>
+                <TableCell align="center">Payment Method</TableCell>
+                <TableCell align="center">Receipt</TableCell>
+                <TableCell align="center">Amount</TableCell>
+                <TableCell align="center">Tags</TableCell>
+                <TableCell/>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {
+                jobDetails.payments.map(payment =>
+                  <TableRow>
+                    <TableCell className={classes.gray}>{payment.invoice_id}</TableCell>
+                    <TableCell align="center">{payment.date}</TableCell>
+                    <TableCell align="center" className={classes.gray}>{payment.user}</TableCell>
+                    <TableCell align="center">{payment.payment_type}</TableCell>
+                    <TableCell className={classes.gray} align="center">{payment.receipt}</TableCell>
+                    <TableCell className={classes.positive} align="center">${payment.amount}</TableCell>
+                    <TableCell>
+                      <div className={classes.spaceEvenlyForAllScreens}>
+                        <StatusLabel status={payment.synced} text={payment.synced ? 'Synced' : 'Not Synced'}/>
+                        <StatusLabel status={payment.email_sent} text={payment.email_sent ? 'Sent' : 'Not sent'}/>
+                      </div>
+                    </TableCell>
+                    <TableCell align="right">
+                      <ListOption id={payment.id}/>
+                    </TableCell>
+                  </TableRow>
+                )
+              }
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </div>
   );

@@ -49,7 +49,7 @@ const LeftSideBar = ({ drawerState, drawerStateActions, heightStyle }) => {
     <div>
       { /* For Desktop Views */}
       <Paper style={heightStyle} className="desktop">
-        <div className="no-scroll-bar-div left-side-bar ">
+        <div className="no-vertical-scroll-bar left-side-bar ">
           <List className="p-l-12 p-t-26" component="nav" aria-label="main mailbox folders">
             {
               topMenuItems.map(item =>
