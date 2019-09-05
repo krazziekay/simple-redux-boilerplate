@@ -26,7 +26,6 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
     },
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
-      alignItems: 'center',
       display: 'flex',
       flexDirection: 'column',
     }

@@ -50,7 +50,7 @@ const LeftSideBar = ({ drawerState, drawerStateActions, heightStyle }) => {
       { /* For Desktop Views */}
       <Paper style={heightStyle} className="desktop">
         <div className="no-scroll-bar-div left-side-bar ">
-          <List className="p-l-12" component="nav" aria-label="main mailbox folders">
+          <List className="p-l-12 p-t-26" component="nav" aria-label="main mailbox folders">
             {
               topMenuItems.map(item =>
                 <div className={item.id === drawerState ? 'selected' : ''}>

@@ -88,10 +88,15 @@ export const themeStyler = (theme, addedThemes) => {
 
     // Button styles
     buttonStyle: {
-      marginLeft: 12,
+      marginLeft: 6,
+      marginRight: 6,
       borderRadius: 50,
+      backgroundColor: '#fff',
       border: '1px solid #ccc',
-      boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)'
+      boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2)',
+      [theme.breakpoints.down('md')]: {
+        marginTop: 12,
+      }
     },
     successButtonStyle: {
       border: `1px solid ${Colors.success}`,

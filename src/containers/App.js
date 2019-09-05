@@ -3,11 +3,10 @@ import Breadcrumb from '../components/Breadcrumb';
 import RightSideBar from '../components/RightSideBar';
 import MidContent from '../components/MidContent';
 import LeftSideBar from '../components/LeftSideBar';
-import Grid from '@material-ui/core/Grid';
 import { themeStyler } from '../helper/helper';
 import { makeStyles } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
 
 
@@ -27,7 +26,14 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
   relative: {
     position: 'relative'
   },
-  sideBarToggler: {
+  sideBarTogglerClosed: {
+    position: 'absolute',
+    right: 0,
+    zIndex: 2,
+    padding: 0,
+    minWidth: 8
+  },
+  sideBarTogglerOpen: {
     position: 'absolute',
     right: '-36px',
     zIndex: 2,
@@ -62,10 +68,10 @@ const App = () => {
       <div className={classes.spaceAround}>
         <div className={`${leftSide} ${classes.relative} ${classes.gridWrapper}`}>
           <div className="desktop">
-            <Button className={classes.sideBarToggler}>
+            <Button className={toggleStatus ? classes.sideBarTogglerOpen : classes.sideBarTogglerClosed} onClick={toggleLeftSideBar}>
               {
-                toggleStatus ? <ArrowForwardIcon onClick={toggleLeftSideBar}/>
-                  : <ArrowBackIcon onClick={toggleLeftSideBar}/>
+                toggleStatus ? <MenuIcon/>
+                  : <ArrowBackIcon/>
               }
             </Button>
           </div>
