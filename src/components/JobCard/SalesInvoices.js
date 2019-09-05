@@ -23,7 +23,7 @@ const SalesInvoices = ({ jobDetails }) => {
         <div className={classes.headerTitle}>
           <span className={classes.subHeaderStyle}>Sales & Invoices</span>
           <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
-            <AddIcon className={classes.iconStyle}/>New Invoice
+            <AddIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>New Invoice
           </Button>
         </div>
 

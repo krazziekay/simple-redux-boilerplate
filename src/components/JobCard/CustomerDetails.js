@@ -40,7 +40,7 @@ const ClientDiv = ({
 
           {
             editFlag && <Button className={classes.buttonStyle} onClick={() => setEditFlag(false)} color="inherit" size="medium" variant="outlined">
-              <CreateIcon className={classes.iconStyle}/>Edit
+              <CreateIcon className={`${classes.iconStyle} ${classes.successStyle}`}/>Edit
             </Button>
           }
         </div>

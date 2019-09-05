@@ -36,7 +36,7 @@ const CreditNotes = ({ jobDetails }) => {
       <div className={classes.headerTitle}>
         <span className={classes.subHeaderStyle}>Credit & Refunds</span>
         <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
-          <AddIcon className={classes.iconStyle}/>New Credit
+          <AddIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>New Credit
         </Button>
       </div>
 

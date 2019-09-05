@@ -56,7 +56,6 @@ export const themeStyler = (theme, addedThemes) => {
       },
     },
     iconStyle: {
-      color: Colors.success,
       fontSize: 18,
       marginRight: 8
     },
@@ -104,8 +103,14 @@ export const themeStyler = (theme, addedThemes) => {
     dangerButtonStyle: {
       border: `1px solid ${Colors.danger}`,
     },
+    primaryButtonStyle: {
+      border: `1px solid ${Colors.primary}`,
+    },
     successStyle: {
       color: Colors.success,
+    },
+    primaryStyle: {
+      color: Colors.primary,
     },
     dangerStyle: {
       color: Colors.danger,

@@ -45,16 +45,16 @@ const FooterActions = ({ data }) => {
         <DeleteIcon className={`${classes.iconStyle} ${classes.dangerStyle}`}/>Delete
       </Button>
       <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
-        <AddIcon className={classes.iconStyle}/>Add Inspection Report
+        <AddIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>Add Inspection Report
       </Button>
       <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
-        <PrintIcon className={classes.iconStyle}/>Print
+        <PrintIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>Print
       </Button>
       <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
-        <SendIcon className={classes.iconStyle}/>Send
+        <SendIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>Send
       </Button>
       <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
-        <PencilIcon className={classes.iconStyle}/>Edit
+        <PencilIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>Edit
       </Button>
     </div>
   );

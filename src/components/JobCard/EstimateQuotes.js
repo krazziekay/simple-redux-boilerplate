@@ -22,7 +22,7 @@ const EstimateQuotes = ({ jobDetails }) => {
         <div className={classes.headerTitle}>
           <span className={classes.subHeaderStyle}>Estimates & Quotes</span>
           <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
-            <AddIcon className={classes.iconStyle}/>New Estimate
+            <AddIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>New Estimate
           </Button>
         </div>
         {

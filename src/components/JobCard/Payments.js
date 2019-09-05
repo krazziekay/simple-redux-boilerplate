@@ -37,7 +37,7 @@ const Payments = ({ jobDetails }) => {
         <div className={classes.headerTitle}>
           <span className={classes.subHeaderStyle}>Payments</span>
           <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
-            <AddIcon className={classes.iconStyle}/>New Payment
+            <AddIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>New Payment
           </Button>
         </div>
 
