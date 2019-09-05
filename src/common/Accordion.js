@@ -59,6 +59,10 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
       padding: '8px 0',
     }
   },
+  totalWrapper: {
+    marginLeft: 12,
+    whiteSpace: 'nowrap'
+  },
   mobileEstimateList: {
     padding: '4px 12px'
   }

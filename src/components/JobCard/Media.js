@@ -23,13 +23,38 @@ const Media = ({ jobDetails, media, fetchMedia }) => {
       <JobDetailsHeader classes={classes}/>
 
       <div>
-        <div className={classes.headerTitle}>
-          <span className={classes.subHeaderStyle}>Photos</span>
-          <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
-            <UploadIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>Upload Photo
-          </Button>
-        </div>
 
+        {/*Pictures*/}
+        <div>
+          <div className={classes.headerTitle}>
+            <span className={classes.subHeaderStyle}>Photos</span>
+            <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
+              <UploadIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>Upload Photo
+            </Button>
+          </div>
+        </div>
+        <hr/>
+
+        {/*Videos*/}
+        <div>
+          <div className={classes.headerTitle}>
+            <span className={classes.subHeaderStyle}>Videos</span>
+            <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
+              <UploadIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>Upload Video
+            </Button>
+          </div>
+        </div>
+        <hr/>
+
+        {/*Documents*/}
+        <div>
+          <div className={classes.headerTitle}>
+            <span className={classes.subHeaderStyle}>Videos</span>
+            <Button className={classes.buttonStyle} color="inherit" size="medium" variant="outlined">
+              <UploadIcon className={`${classes.iconStyle} ${classes.primaryStyle}`}/>Upload Video
+            </Button>
+          </div>
+        </div>
 
       </div>
     </div>

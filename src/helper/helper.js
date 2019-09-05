@@ -87,7 +87,7 @@ export const themeStyler = (theme, addedThemes) => {
 
     // Button styles
     buttonStyle: {
-      marginLeft: 6,
+      marginLeft: 12,
       marginRight: 6,
       borderRadius: 50,
       backgroundColor: '#fff',
@@ -97,6 +97,7 @@ export const themeStyler = (theme, addedThemes) => {
         marginTop: 12,
       }
     },
+    // for buttons only
     successButtonStyle: {
       border: `1px solid ${Colors.success}`,
     },
@@ -106,6 +107,7 @@ export const themeStyler = (theme, addedThemes) => {
     primaryButtonStyle: {
       border: `1px solid ${Colors.primary}`,
     },
+    // for icons inside the buttons
     successStyle: {
       color: Colors.success,
     },
@@ -118,13 +120,13 @@ export const themeStyler = (theme, addedThemes) => {
 
     // Color styles
     positive: {
-      color: '#069697'
+      color: Colors.positive
     },
     negative: {
-      color: '#EA3D2F'
+      color: Colors.danger
     },
     gray: {
-      color: '#5e6366',
+      color: Colors.disabled,
     },
 
   };
