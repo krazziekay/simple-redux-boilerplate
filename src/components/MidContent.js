@@ -10,7 +10,7 @@ const MidContent = ({ drawerState, heightStyle }) => {
       { /* For Desktop Views */}
       <Paper style={heightStyle} className="desktop">
 
-        <div className="mid-content no-scroll-bar-div">
+        <div className="mid-content no-vertical-scroll-bar">
           <ContentPerMenu currentMenu={drawerState}/>
         </div>
       </Paper>
