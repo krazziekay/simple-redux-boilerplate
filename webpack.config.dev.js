@@ -57,6 +57,16 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: 'style!css!sass'
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader'],
+        includePaths: [path.resolve(__dirname, 'node_modules')],
+      },
+      {
+        test: /\.(eot|woff|woff2|ttf|otf)$/,
+        loader: 'file?prefix=font/',
+        includePaths: [path.resolve(__dirname, 'node_modules')],
       }
     ]
   }
