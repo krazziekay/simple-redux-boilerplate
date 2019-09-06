@@ -38,7 +38,7 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
     marginLeft: 14
   },
   listItem: {
-    padding: '8px 0'
+    padding: 8
   }
 }));
 
@@ -50,10 +50,10 @@ const LeftSideBar = ({ drawerState, drawerStateActions, heightStyle }) => {
       { /* For Desktop Views */}
       <Paper style={heightStyle} className="desktop">
         <div className="no-vertical-scroll-bar left-side-bar ">
-          <List className="p-l-12 p-t-26" component="nav" aria-label="main mailbox folders">
+          <List className="p-t-26" component="nav" aria-label="main mailbox folders">
             {
               topMenuItems.map(item =>
-                <div className={item.id === drawerState ? 'selected' : ''}>
+                <div className={item.id === drawerState ? 'selected ' : ''}>
                   <ListItem className={classes.listItem} button onClick={() => drawerStateActions.selectOption(item.id)}>
                     <ListItemIcon>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.title}/>
