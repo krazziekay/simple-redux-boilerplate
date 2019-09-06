@@ -66,7 +66,7 @@ const LeftSideBar = ({ drawerState, drawerStateActions, heightStyle }) => {
             <Divider variant="middle"/>
             <Typography className={classes.helpText}>Help & Support</Typography>
 
-            <List className="p-l-12" component="nav" aria-label="main mailbox folders">
+            <List className="" component="nav" aria-label="main mailbox folders">
               {
                 bottomMenuItems.map(item =>
                   <ListItem button className={classes.listItem}>
