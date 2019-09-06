@@ -1,0 +1,2 @@
+export const FETCH_ESTIMATES = 'FETCH_ESTIMATES';
+export const ADD_ESTIMATES = 'ADD_ESTIMATES';

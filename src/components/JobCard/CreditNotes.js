@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import AddIcon from '@material-ui/icons/Add';
@@ -12,6 +12,8 @@ import StatusLabel from '../../common/StatusLabel';
 import ListOption from '../../common/ListMenuOptions';
 import { themeStyler } from '../../helper/helper';
 import JobDetailsHeader from '../../common/JobDetailsHeader';
+import { fetchCreditNotes } from '../../actions/CreditNotesActions';
+import { bindActionCreators } from 'redux';
 
 const useStyle = makeStyles(theme => themeStyler(theme, {
   spaceEvenlyForAllScreens: {
@@ -27,8 +29,11 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
 }));
 
 
-const CreditNotes = ({ jobDetails }) => {
+const CreditNotes = ({ jobDetails, creditNotes, fetchCreditNotes }) => {
   const classes = useStyle();
+  useEffect(() => {
+    fetchCreditNotes();
+  }, []);
   return (
     <div className="p-l-24 p-r-24 p-t-12 p-b-12">
       <JobDetailsHeader classes={classes}/>
@@ -56,7 +61,7 @@ const CreditNotes = ({ jobDetails }) => {
           </TableHead>
           <TableBody>
             {
-              jobDetails.credit_notes.map(creditNote =>
+              creditNotes.map(creditNote =>
                 <TableRow>
                   <TableCell className={classes.gray}>{creditNote.invoice_id}</TableCell>
                   <TableCell align="center">{creditNote.date}</TableCell>
@@ -85,5 +90,9 @@ const CreditNotes = ({ jobDetails }) => {
 
 
 export default connect(state => ({
-  jobDetails: state.jobDetails.data
-}))(CreditNotes);
+    jobDetails: state.jobDetails.data,
+    creditNotes: state.creditNotes
+  }), dispatch => ({
+    fetchCreditNotes: bindActionCreators(fetchCreditNotes, dispatch)
+  })
+)(CreditNotes);

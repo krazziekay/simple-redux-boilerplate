@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import AddIcon from '@material-ui/icons/Add';
@@ -12,6 +12,9 @@ import StatusLabel from '../../common/StatusLabel';
 import ListOption from '../../common/ListMenuOptions';
 import { themeStyler } from '../../helper/helper';
 import JobDetailsHeader from '../../common/JobDetailsHeader';
+import { fetchPayments } from '../../actions/PaymentActions';
+import { bindActionCreators } from 'redux';
+
 
 const useStyle = makeStyles(theme => themeStyler(theme, {
   spaceEvenlyForAllScreens: {
@@ -27,8 +30,15 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
 }));
 
 
-const Payments = ({ jobDetails }) => {
+const Payments = ({
+                    jobDetails,
+                    payments,
+                    fetchPayments
+                  }) => {
   const classes = useStyle();
+  useEffect(() => {
+    fetchPayments();
+  }, []);
   return (
     <div className="p-l-24 p-r-24 p-t-12 p-b-12">
       <JobDetailsHeader classes={classes}/>
@@ -57,7 +67,7 @@ const Payments = ({ jobDetails }) => {
             </TableHead>
             <TableBody>
               {
-                jobDetails.payments.map(payment =>
+                payments.map(payment =>
                   <TableRow>
                     <TableCell className={classes.gray}>{payment.invoice_id}</TableCell>
                     <TableCell align="center">{payment.date}</TableCell>
@@ -87,5 +97,9 @@ const Payments = ({ jobDetails }) => {
 
 
 export default connect(state => ({
-  jobDetails: state.jobDetails.data
-}))(Payments);
+    jobDetails: state.jobDetails.data,
+    payments: state.payments
+  }), dispatch => ({
+    fetchPayments: bindActionCreators(fetchPayments, dispatch)
+  })
+)(Payments);

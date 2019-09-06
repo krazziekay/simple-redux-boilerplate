@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import AddIcon from '@material-ui/icons/Add';
@@ -7,6 +7,8 @@ import Accordion from '../../common/Accordion';
 import InvoiceActionFooter from '../../common/InvoiceActionFooter';
 import { themeStyler } from '../../helper/helper';
 import JobDetailsHeader from '../../common/JobDetailsHeader';
+import { fetchSales } from './../../actions/SalesActions';
+import { bindActionCreators } from 'redux';
 
 
 const useStyle = makeStyles(theme => themeStyler(theme));
@@ -14,8 +16,17 @@ const useStyle = makeStyles(theme => themeStyler(theme));
 
 const passActionFooter = (data) => <InvoiceActionFooter data={data}/>;
 
-const SalesInvoices = ({ jobDetails }) => {
+const SalesInvoices = ({
+                         jobDetails,
+                         sales,
+                         fetchSales
+                       }) => {
   const classes = useStyle();
+  useEffect(() => {
+    fetchSales();
+  }, []);
+
+
   return (
     <div className="p-l-24 p-r-24 p-t-12 p-b-12">
       <JobDetailsHeader classes={classes}/>
@@ -29,7 +40,7 @@ const SalesInvoices = ({ jobDetails }) => {
 
 
         {
-          jobDetails.sales.map(data =>
+          sales.map(data =>
             <Accordion data={data} actionFooter={passActionFooter}/>
           )
         }
@@ -40,5 +51,9 @@ const SalesInvoices = ({ jobDetails }) => {
 
 
 export default connect(state => ({
-  jobDetails: state.jobDetails.data
-}))(SalesInvoices);
+  jobDetails: state.jobDetails.data,
+  sales: state.sales
+}), dispatch => ({
+  fetchSales: bindActionCreators(fetchSales, dispatch)
+}))
+(SalesInvoices);
