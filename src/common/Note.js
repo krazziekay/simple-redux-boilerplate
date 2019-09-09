@@ -12,14 +12,16 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
     marginLeft: 12
   },
   tech: {
-    fontFamily: 'Quicksand'
+    fontFamily: 'Quicksand',
   },
   muted: {
     color: Colors.disabled
   },
   note: {
     fontFamily: 'Roboto',
-    margin: '12px 0'
+    margin: '12px 0',
+    color: '#3E4345',
+    fontSize: 14
   },
   avatar: {
     height: 50,
@@ -46,6 +48,8 @@ const Note = ({
           </div>
           <div className={classes.note}>{noteDetails}</div>
         </div>
+
+
       </div>
     </div>
   );

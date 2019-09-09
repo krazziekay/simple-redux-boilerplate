@@ -56,12 +56,18 @@ const fetchNotes = () => {
   ];
 };
 
+const addNote = (state, data) => {
+  let clone = Object.assign([], state);
+  clone.unshift(data);
+  return clone;
+};
+
 export default (
   state = [],
   action) => {
   switch (action.type) {
     case ADD_NOTES:
-      return state;
+      return addNote(state, action.payload);
     case FETCH_NOTES:
       return fetchNotes();
     default:
