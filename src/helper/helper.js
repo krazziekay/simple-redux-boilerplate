@@ -4,6 +4,9 @@ import React from 'react';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
+import BackspaceIcon from '@material-ui/icons/Backspace';
 
 export const ContentPerMenu = ({ currentMenu }) => {
   return topMenuItems.filter(menu => menu.id === currentMenu)[0].body;
@@ -129,6 +132,39 @@ export const getVisitStatus = (status) => {
       }}>
         <AccessTimeIcon style={{ color: '#F3AA18', fontSize: 18, verticalAlign: 'middle' }}/>&nbsp;<span>Idle</span>
       </div>);
+  }
+};
+
+/**
+ * 1 -> Added
+ * 2 -> Edited
+ * 3 -> Deleted
+ * @param status
+ * @returns {*}
+ */
+export const getTimelineIcons = (status) => {
+  switch (parseInt(status)) {
+    case 1:
+      return <AddIcon/>;
+    case 2:
+      return <EditIcon/>;
+    case 3:
+      return <BackspaceIcon/>;
+    default:
+      break;
+  }
+};
+
+export const getTimelineIconStyle = (status) => {
+  switch (parseInt(status)) {
+    case 1:
+      return { background: Colors.primary, color: '#fff' };
+    case 2:
+      return { background: Colors.success, color: '#fff' };
+    case 3:
+      return { background: Colors.danger, color: '#fff' };
+    default:
+      break;
   }
 };
 
