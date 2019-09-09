@@ -13,6 +13,7 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
   },
   tech: {
     fontFamily: 'Quicksand',
+    paddingLeft: 12
   },
   muted: {
     color: Colors.disabled
@@ -21,12 +22,10 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
     fontFamily: 'Roboto',
     margin: '12px 0',
     color: '#3E4345',
-    fontSize: 14
-  },
-  avatar: {
-    height: 50,
-    width: 50,
-    borderRadius: '50%'
+    fontSize: 14,
+    background: '#f5f5f5',
+    padding: '8px 12px;',
+    borderRadius: 24
   }
 }));
 

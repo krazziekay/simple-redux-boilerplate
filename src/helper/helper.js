@@ -1,6 +1,9 @@
 import { topMenuItems } from '../common/leftSideMenu';
 import { Colors } from '../common/colors';
-
+import React from 'react';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 
 export const ContentPerMenu = ({ currentMenu }) => {
   return topMenuItems.filter(menu => menu.id === currentMenu)[0].body;
@@ -97,6 +100,36 @@ export const scrollIt = (destination, duration = 200, easing = 'linear', callbac
   }
 
   scroll();
+};
+
+export const getVisitStatus = (status) => {
+  // eslint-disable-next-line radix
+  switch (parseInt(status)) {
+    case 0:
+      return (<div className="visit-status-label" style={{
+        background: 'rgba(243, 170, 24, 0.23)',
+      }}>
+        <HourglassEmptyIcon style={{ color: '#F3AA18', fontSize: 18, verticalAlign: 'middle' }}/>&nbsp;<span>Idle</span>
+      </div>);
+    case 1:
+      return (<div className="visit-status-label" style={{
+        background: 'rgba(54, 123, 245, 0.23)',
+      }}>
+        <AccessTimeIcon style={{ color: '#367BF5', fontSize: 18, verticalAlign: 'middle' }}/>&nbsp;<span>In Progress</span>
+      </div>);
+    case 2:
+      return (<div className="visit-status-label" style={{
+        background: 'rgba(47, 168, 79, 0.23)',
+      }}>
+        <EventAvailableIcon style={{ color: '#2FA84F', fontSize: 18, verticalAlign: 'middle' }}/>&nbsp;<span>Completed</span>
+      </div>);
+    default:
+      return (<div className="visit-status-label" style={{
+        background: '#F7F9FA',
+      }}>
+        <AccessTimeIcon style={{ color: '#F3AA18', fontSize: 18, verticalAlign: 'middle' }}/>&nbsp;<span>Idle</span>
+      </div>);
+  }
 };
 
 /**
@@ -215,6 +248,12 @@ export const themeStyler = (theme, addedThemes) => {
     gray: {
       color: Colors.disabled,
     },
+
+    avatar: {
+      height: 50,
+      width: 50,
+      borderRadius: '50%'
+    }
 
   };
   return Object.assign({}, defaultTheme, addedThemes);

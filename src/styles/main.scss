@@ -90,6 +90,17 @@ body {
   width: 100%;
 }
 
+.visit-status-label {
+  border-radius: 4px;
+  padding: 0 12px;
+  line-height: 24px;
+  height: 24px;
+  white-space: nowrap;
+  font-family: Roboto;
+  display: inline-flex;
+  align-items: center;
+}
+
 
 /**
 Overriding Material CSS

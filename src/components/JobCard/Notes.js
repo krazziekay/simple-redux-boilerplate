@@ -5,11 +5,10 @@ import Note from './../../common/Note';
 import { connect } from 'react-redux';
 import { fetchNotes, addNotes } from '../../actions/NotesActions';
 import { bindActionCreators } from 'redux';
-import { scrollIt, themeStyler } from '../../helper/helper';
+import { themeStyler } from '../../helper/helper';
 import SendIcon from '@material-ui/icons/Send';
 import moment from 'moment';
 import Button from '@material-ui/core/Button';
-
 
 const SAMPLENOTE = {
   "id": "34448",
@@ -81,8 +80,6 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
     }
   },
 }));
-
-const columnHeightCss = {};
 
 
 const Notes = ({

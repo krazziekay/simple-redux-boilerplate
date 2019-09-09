@@ -7,6 +7,7 @@ import creditNotes from './CreditNotes';
 import payments from './Payments';
 import media from './Media';
 import notes from './Notes';
+import visits from './Visits';
 
 const rootReducer = combineReducers({
   jobDetails,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   media,
   payments,
   creditNotes,
-  notes
+  notes,
+  visits
 });
 
 export default rootReducer;
