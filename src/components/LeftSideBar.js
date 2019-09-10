@@ -61,7 +61,7 @@ const LeftSideBar = ({ drawerState, toggleStatus, drawerStateActions, heightStyl
               topMenuItems.map(item =>
                 <div className={item.id === drawerState ? 'selected ' : ''}>
                   <ListItem className={classes.listItem} button onClick={() => drawerStateActions.selectOption(item.id)}>
-                    <Tooltip title={item.title} TransitionComponent={Zoom} enterDelay={1000} leaveDelay={200}>
+                    <Tooltip title={item.title} TransitionComponent={Zoom} enterDelay={500} leaveDelay={200}>
                       <ListItemIcon className={!toggleStatus && classes.centerNavMenu}>{item.icon}</ListItemIcon>
                     </Tooltip>
                     {toggleStatus && <ListItemText primary={item.title}/>}

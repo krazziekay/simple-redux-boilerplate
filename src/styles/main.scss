@@ -162,3 +162,7 @@ Overriding Material CSS
     background-color: #f2f2f2 !important;
   }
 }
+
+.vertical-timeline::before, .vertical-timeline-element-content {
+  background-color: #F7F9FA !important;
+}
