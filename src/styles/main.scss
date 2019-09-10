@@ -105,6 +105,10 @@ body {
 /**
 Overriding Material CSS
  */
+.MuiTabs-flexContainer {
+  height: 100%;
+}
+
 .MuiInputBase-root.Mui-disabled {
   color: inherit !important;
 }
