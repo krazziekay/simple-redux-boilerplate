@@ -14,6 +14,8 @@ import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Tooltip from '@material-ui/core/Tooltip';
+import Zoom from '@material-ui/core/Zoom';
 import * as DrawerStateActions from '../actions/DrawerStateAction';
 import { themeStyler } from '../helper/helper';
 
@@ -59,7 +61,9 @@ const LeftSideBar = ({ drawerState, toggleStatus, drawerStateActions, heightStyl
               topMenuItems.map(item =>
                 <div className={item.id === drawerState ? 'selected ' : ''}>
                   <ListItem className={classes.listItem} button onClick={() => drawerStateActions.selectOption(item.id)}>
-                    <ListItemIcon className={!toggleStatus && classes.centerNavMenu}>{item.icon}</ListItemIcon>
+                    <Tooltip title={item.title} TransitionComponent={Zoom} enterDelay={1000} leaveDelay={200}>
+                      <ListItemIcon className={!toggleStatus && classes.centerNavMenu}>{item.icon}</ListItemIcon>
+                    </Tooltip>
                     {toggleStatus && <ListItemText primary={item.title}/>}
                   </ListItem>
                 </div>
