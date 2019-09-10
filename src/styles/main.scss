@@ -163,6 +163,7 @@ Overriding Material CSS
   }
 }
 
-.vertical-timeline::before, .vertical-timeline-element-content {
+.vertical-timeline::before,
+.vertical-timeline-element-content {
   background-color: #F7F9FA !important;
 }
