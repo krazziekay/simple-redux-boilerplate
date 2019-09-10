@@ -51,8 +51,8 @@ const App = () => {
 
   const toggleLeftSideBar = () => {
     if (!toggleStatus) {
-      setLeftSide('sz-0');
-      setMidSide('sz-80');
+      setLeftSide('sz-5');
+      setMidSide('sz-95');
     } else {
       setLeftSide('sz-20');
       setMidSide('sz-60');
@@ -75,7 +75,7 @@ const App = () => {
               }
             </Button>
           </div>
-          <LeftSideBar heightStyle={columnHeightCss}/>
+          <LeftSideBar toggleStatus={!toggleStatus} heightStyle={columnHeightCss}/>
         </div>
         <div className={`${midSide}  ${classes.gridWrapper}`}>
           <MidContent heightStyle={columnHeightCss}/>

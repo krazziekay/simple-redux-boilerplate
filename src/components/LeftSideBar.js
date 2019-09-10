@@ -39,10 +39,13 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
   },
   listItem: {
     padding: 8
+  },
+  centerNavMenu: {
+    justifyContent: 'center'
   }
 }));
 
-const LeftSideBar = ({ drawerState, drawerStateActions, heightStyle }) => {
+const LeftSideBar = ({ drawerState, toggleStatus, drawerStateActions, heightStyle }) => {
   const classes = useStyle();
 
   return (
@@ -55,30 +58,33 @@ const LeftSideBar = ({ drawerState, drawerStateActions, heightStyle }) => {
               topMenuItems.map(item =>
                 <div className={item.id === drawerState ? 'selected ' : ''}>
                   <ListItem className={classes.listItem} button onClick={() => drawerStateActions.selectOption(item.id)}>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.title}/>
+                    <ListItemIcon className={!toggleStatus && classes.centerNavMenu}>{item.icon}</ListItemIcon>
+                    {toggleStatus && <ListItemText primary={item.title}/>}
                   </ListItem>
                 </div>
               )
             }
           </List>
-          <div>
-            <Divider variant="middle"/>
-            <Typography className={classes.helpText}>Help & Support</Typography>
+          {
+            toggleStatus &&
+            <div>
+              <Divider variant="middle"/>
+              <Typography className={classes.helpText}>Help & Support</Typography>
 
-            <List className="" component="nav" aria-label="main mailbox folders">
-              {
-                bottomMenuItems.map(item =>
-                  <ListItem button className={classes.listItem}>
-                    <ListItemIcon>
-                      <FiberManualRecordIcon className={classes.bottomMenuListIcons}/>
-                    </ListItemIcon>
-                    <ListItemText className={classes.bottomMenuList} primary={item.title}/>
-                  </ListItem>
-                )
-              }
-            </List>
-          </div>
+              <List className="" component="nav" aria-label="main mailbox folders">
+                {
+                  bottomMenuItems.map(item =>
+                    <ListItem button className={classes.listItem}>
+                      <ListItemIcon>
+                        <FiberManualRecordIcon className={classes.bottomMenuListIcons}/>
+                      </ListItemIcon>
+                      <ListItemText className={classes.bottomMenuList} primary={item.title}/>
+                    </ListItem>
+                  )
+                }
+              </List>
+            </div>
+          }
         </div>
       </Paper>
 
