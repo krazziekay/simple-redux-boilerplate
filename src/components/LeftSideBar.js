@@ -41,7 +41,8 @@ const useStyle = makeStyles(theme => themeStyler(theme, {
     padding: 8
   },
   centerNavMenu: {
-    justifyContent: 'center'
+    justifyContent: 'center',
+    minWidth: 'unset'
   }
 }));
 
